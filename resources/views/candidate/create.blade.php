@@ -85,7 +85,7 @@
   		<option value="other">Other </option>
   	</select>
 
-  	 {{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-block	' ))}}
+  	 {{form::submit ('Next Page', array ('class' => 'btn btn-success btn-lg btn-block	' ))}}
 
 
   	<h3 style="color: red;">* Fields are mandatory </h3>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Position extends Model
 {
-    public function candidates(){
+    public function candidate(){
      return $this->belongsTo ('App\Candidate');
     }
 }

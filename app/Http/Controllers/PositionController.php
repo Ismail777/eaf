@@ -48,10 +48,10 @@ class PositionController extends Controller
 
         $position = new Position;
 
-         $request->session()->pull('candidate_id');
-
+        $candidate_id = Candidate::find($id);   //Need help here
+    
         $position-> int_time = $request->int_time;
-        //$position-> candidate_id = $candidate_id;
+        $position-> candidate_id = $candidate_id;
         $position-> int_date = $request->int_date;
         $position-> position = $request->position;
         $position-> pre_date = $request->pre_date;

@@ -4,7 +4,7 @@
 @section ('content')
 
 @foreach ($candidate as $candidate)
-	{{ $candidate->Interview->salary }}
+	{{ $candidate->position->salary }}
 @endforeach
 
 @endsection
