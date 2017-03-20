@@ -4,35 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Employment;
 use Illuminate\Http\Request;
+use Session;
 
 class EmploymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function create()
     {
-        return view ('employment.index') ;
-           }
+        return view ('employment.create');
+    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function store(Request $request)
     {
          $this ->validate ($request, array( 
@@ -50,57 +35,15 @@ class EmploymentController extends Controller
          $employment-> start_date = $request->start_date;
          $employment-> end_date = $request->end_date;
          $employment-> leave_reason = $request->leave_reason;
+         $request->session()->put('emp_key', $employment->id);
+
 
          $employment->save();
 
          Session::flash ('success', 'The candidate employment form has been successfuly completed!');
 
-         return redirect(/);
+         return redirect()->route('declaration.create');
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Employment  $employment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Employment $employment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Employment  $employment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Employment $employment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Employment  $employment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Employment $employment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Employment  $employment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Employment $employment)
-    {
-        //
-    }
 }

@@ -3,8 +3,9 @@
 
 @section ('content')
 
-@foreach ($candidate as $candidate)
-	{{ $candidate->position->salary }}
-@endforeach
+	@foreach ($candidates as $candidate)
+	
+	{{ $candidate->position->salary}}
 
+	@endforeach
 @endsection

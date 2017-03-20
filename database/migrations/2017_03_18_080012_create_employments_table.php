@@ -16,6 +16,12 @@ class CreateEmploymentsTable extends Migration
         Schema::create('employments', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string ('company');
+            $table->string ('job_title');
+            $table->string ('ex_salary');
+            $table->date ('start_date');
+            $table->date ('end_date');
+            $table->string ('leave_reason');
         });
     }
 

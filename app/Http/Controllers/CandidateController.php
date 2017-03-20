@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Candidate;
+use App\Position;
 
 
 class CandidateController extends Controller
@@ -17,8 +18,8 @@ class CandidateController extends Controller
     public function index()
     {
         
-        $candidate = Candidate::All();
-        return view ('form.index')->withCandidate($candidate);
+        $candidates = Candidate::all();
+        return view ('candidate.index')->withCandidates($candidates);
     }
 
     /**
@@ -31,12 +32,7 @@ class CandidateController extends Controller
         return view ('candidate.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
          $this ->validate ($request, array('name' => 'required | max:255' ,
@@ -72,13 +68,19 @@ class CandidateController extends Controller
          $candidate-> citizenship = $request->citizenship;
          $candidate-> religion = $request->religion;
          $candidate-> race = $request->race;
+         $candidate->position_id= $request->session()->get('pos_key');
+         $candidate->education_id= $request->session()->get('ed_key');
+         $candidate->employment_id= $request->session()->get('emp_key');
+         $candidate->declaration_id= $request->session()->get('dec_key');
+
+
          
-
          $candidate-> save();
-
-         $request->session()->put('candidate_id', $candidate->id);
      Session::flash ('success', 'The candidate description has been successfuly saved!');
-         return redirect ('/position/create');
+    return redirect()->route ('candidate.index');
+
+   
+         
     }
 
     /**
