@@ -20,6 +20,7 @@ Route::resource ('position', 'PositionController');
 Route::resource ('education', 'EducationController');
 Route::resource ('declaration', 'DeclarationController');
 Route::resource ('employment', 'EmploymentController');
+Route::get ('search',['uses'=>'CandidateController@search', 'as'=>'candidate.search']);
 
 
 

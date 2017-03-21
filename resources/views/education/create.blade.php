@@ -29,7 +29,7 @@
   	<h3>Education</h3><i> PENDIDIKAN </i>
 
     {{form::label ('school', '1.  School name/ Nama Sekolah:')}}
-    {{form::text ('school', null, array('class' => 'form-control', 'required' => '')) }}
+    {{form::text ('school', null, array('class' => 'form-control')) }}
 
   	{{form::label ('start_date', '2. Start Date/Tempoh Mula::')}}
   	{{form::date ('start_date', null, array('class' => 'form-control'))}}

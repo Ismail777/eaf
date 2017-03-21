@@ -16,7 +16,7 @@ class CreateEducationsTable extends Migration
         Schema::create('educations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('candidate_id');
+            $table->integer('candidate_id')->nullable();
             $table->string('school');
             $table->date('start_date');
             $table->date('end_date');

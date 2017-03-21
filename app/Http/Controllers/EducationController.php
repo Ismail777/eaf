@@ -36,7 +36,9 @@ class EducationController extends Controller
         $education-> end_date = $request->end_date;
         $education-> cert = $request->cert;
         $education-> cgpa = $request->cgpa;
+        $education->save();
         $request->session()->put('ed_key', $education->id);
+        Session::flash ('success', 'The education info has been successfuly saved!');
 
         return redirect()-> route('employment.create');        
     }

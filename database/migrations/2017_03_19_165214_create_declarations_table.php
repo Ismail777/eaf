@@ -18,15 +18,15 @@ class CreateDeclarationsTable extends Migration
             $table->timestamps();
             $table->string('employed_by_fresco');
             $table->string('relatives_in_fresco');
-            $table->string('relative_name');
+            $table->string('relative_name')->nullable();
             $table->string('food_cert');
-            $table->string('food_cert_date');
+            $table->string('food_cert_date')->nullable();
             $table->string('typhoid');
-            $table->string('typhoid_date');
+            $table->string('typhoid_date')->nullable();
             $table->string('phy_disability');
-            $table->string('phy_disability_type');
+            $table->string('phy_disability_type')->nullable();
             $table->string('illness');
-            $table->string('illness_type');
+            $table->string('illness_type')->nullable();
             $table->string('jaya_grocer');
             $table->string('fresco');
 

@@ -20,13 +20,17 @@ class CandidateController extends Controller
         
         $candidates = Candidate::all();
         return view ('candidate.index')->withCandidates($candidates);
+
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   public function search(){
+
+        $search = \Request::get('search');
+        $candidates = Candidate::where('name','like','%'.$search.'%')->orderBy('id')->paginate(3); 
+        return view ('candidate.index')->withCandidates($candidates);
+   }
+
     public function create()
     {
         return view ('candidate.create');
@@ -91,7 +95,8 @@ class CandidateController extends Controller
      */
     public function show($id)
     {
-        //
+        $candidate= candidate::find ($id);
+        return view ('candidate.show')-> with ('candidate', $candidate);
     }
 
     /**

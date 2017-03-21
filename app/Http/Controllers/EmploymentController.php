@@ -35,13 +35,10 @@ class EmploymentController extends Controller
          $employment-> start_date = $request->start_date;
          $employment-> end_date = $request->end_date;
          $employment-> leave_reason = $request->leave_reason;
-         $request->session()->put('emp_key', $employment->id);
-
-
          $employment->save();
-
+         $request->session()->put('emp_key', $employment->id);
          Session::flash ('success', 'The candidate employment form has been successfuly completed!');
-
+         
          return redirect()->route('declaration.create');
 
     }

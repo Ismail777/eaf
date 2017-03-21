@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li {{ Request::is('/')? 'class=active':'' }}> <a href="/">Home</a></li>
-            <li {{ Request::is('form/create')? 'class=active':'' }}> <a href="/form/create">Join El-fresco</a></li>
+            <li {{ Request::is('position/create')? 'class=active':'' }}> <a href="/position/create">Join El-fresco</a></li>
             
           </ul>
 

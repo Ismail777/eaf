@@ -21,7 +21,7 @@ class DeclarationController extends Controller
     {
         $this ->validate ($request, array( 
         				'employed_by_fresco'=>'required'
-        			,'relatives_in_fresco'=>'required'
+        			    ,'relatives_in_fresco'=>'required'
         				,'food_cert'=>'required'
         				,'typhoid'=>'required'
         				,'phy_disability'=>'required'
@@ -48,6 +48,7 @@ class DeclarationController extends Controller
  	$declaration -> save();
 
     $request->session()->put('dec_key', $declaration->id);
+    Session::flash ('success', 'The position info has been successfuly saved!');
 
     return redirect()->route ('candidate.create');
 
