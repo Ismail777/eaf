@@ -38,10 +38,10 @@ class PositionController extends Controller
         $position-> salary = $request->salary;
         $position-> source = $request->source;
         $position-> recommend_name = $request->recommend_name;
+        $position->candidate_id= $request->session()->get('candidate_id');
        
 
         $position->save();
-        $request->session()->put('pos_key', $position->id);
         Session::flash ('success', 'The position info has been successfuly saved!');
         return redirect()->route ('education.create');
 

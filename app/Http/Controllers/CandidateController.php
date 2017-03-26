@@ -4,17 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use Mail;
+use App\Http\Requests;
 use App\Candidate;
-use App\Position;
+use App\Education;
+use App\Employment;
+use PDF;
 
 
 class CandidateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+  public function __construct(){
+        $this ->middleware ('auth') ;  // Limit the featured of this controller to logged in users you may add (except or only is an array)
+    }
+
+    
+
+    public function getInvite(){
+
+        return view ('candidate.emailForm');
+    }
+
     public function index()
     {
         
@@ -24,6 +35,7 @@ class CandidateController extends Controller
 
     }
 
+
    public function search(){
 
         $search = \Request::get('search');
@@ -31,80 +43,41 @@ class CandidateController extends Controller
         return view ('candidate.index')->withCandidates($candidates);
    }
 
-    public function create()
-    {
-        return view ('candidate.create');
-    }
 
-   
-    public function store(Request $request)
-    {
-         $this ->validate ($request, array('name' => 'required | max:255' ,
-                                        'nric' => 'required' ,
-                                        'address' => 'required | max:255 ' ,
-                                        'mobile_no'=>'required'
-                                        ,'email'=>'required|max:255'
-                                        ,'birthday'=>'required'
-                                        ,'epf'=>'max:255'
-                                        ,'gender'=>'required'
-                                        ,'martial_status'=>'required | max:255'
-                                        ,'spouse_occupation'=>'max:255'
-                                        ,'kids_no'=>''
-                                        ,'birth_country'=>'required'
-                                        ,'citizenship'=>'required'
-                                        ,'religion'=>'required'
-                                        ,'race'=>'required'
-                                        )) ;
-         $candidate = new Candidate;
-
-         $candidate-> name = $request->name;
-         $candidate-> nric = $request->nric;
-         $candidate-> address = $request->address;
-         $candidate-> mobile_no = $request->mobile_no;
-         $candidate-> email = $request->email;
-         $candidate-> birthday = $request->birthday;
-         $candidate-> epf = $request->epf;
-         $candidate-> gender = $request->gender;
-         $candidate-> martial_status = $request->martial_status;
-         $candidate-> spouse_occupation = $request->spouse_occupation;
-         $candidate-> kids_no = $request->kids_no;
-         $candidate-> birth_country = $request->birth_country;
-         $candidate-> citizenship = $request->citizenship;
-         $candidate-> religion = $request->religion;
-         $candidate-> race = $request->race;
-         $candidate->position_id= $request->session()->get('pos_key');
-         $candidate->education_id= $request->session()->get('ed_key');
-         $candidate->employment_id= $request->session()->get('emp_key');
-         $candidate->declaration_id= $request->session()->get('dec_key');
-
-
-         
-         $candidate-> save();
-     Session::flash ('success', 'The candidate description has been successfuly saved!');
-    return redirect()->route ('candidate.index');
-
-   
-         
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show($id,Request $request)
     {
         $candidate= candidate::find ($id);
-        return view ('candidate.show')-> with ('candidate', $candidate);
+        $educations = Education::where('candidate_id',$candidate->id)->get();
+        $employments = Employment::where('candidate_id',$candidate->id)->get();
+
+        if ($request->has ('download')){
+             $pdf = PDF::loadView('candidate.show');
+             return $pdf->download('candidate.show');
+        }
+
+        return view ('candidate.show')-> with ('candidate', $candidate)->with ('educations',$educations)->with ('employments',$employments);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
+    public function postInvite($id, Request $request){
+
+        $candidate= candidate::find ($id);
+
+        $data = array('email'=> $candidate->email
+                    , 'subject'=> $request->subject
+                    , 'bodyMessage'=> $request->message );
+      Mail::send('emails.contact', $data, function($message) use  ($data){  //Mail::queue is to send many mails data can be accessed in the view as it is
+        $message->from('fresco_marketing@gmail.com');
+          $message->to($data['email']);
+            $message->subject($data['subject']);
+              
+      });  
+        Session::flash ('success', 'Your Email Was Sent!');
+      return redirect('/candidate');
+
+    }
+
     public function edit($id)
     {
         //

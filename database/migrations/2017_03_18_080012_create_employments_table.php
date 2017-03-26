@@ -16,12 +16,13 @@ class CreateEmploymentsTable extends Migration
         Schema::create('employments', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string ('company');
-            $table->string ('job_title');
-            $table->string ('ex_salary');
-            $table->date ('start_date');
-            $table->date ('end_date');
-            $table->string ('leave_reason');
+            $table->integer('candidate_id')->nullable()->unsigned();
+            $table->string ('company')->nullable();
+            $table->string ('job_title')->nullable();
+            $table->string ('ex_salary')->nullable();
+            $table->date ('start_date')->nullable();
+            $table->date ('end_date')->nullable();
+            $table->string ('leave_reason')->nullable();
         });
     }
 

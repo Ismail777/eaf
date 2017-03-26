@@ -15,7 +15,7 @@
 			<button type="submit" class="btn btn-success btn-lg"></button>
 			
 		</span>
-		{!! Form::close()!!}
+		{!! Form::close() !!}
 	</div>
 
 
@@ -33,7 +33,7 @@
 		 	 <tbody>
 		 	 	@foreach ($candidates as $candidate)
 		 	 	<tr>
-		 	 	<th> {{$candidate->id}} </th>
+		 	 	<th>{{$candidate->id}} </th>
 		 	 	<td>{{$candidate->name}}</td>
 		 		<td>{{$candidate->position->pre_outlet}}</td>
 		 		<td>{{$candidate->nric}}</td>

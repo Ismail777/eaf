@@ -16,6 +16,8 @@ class CreateDeclarationsTable extends Migration
         Schema::create('declarations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer ('candidate_id')->unsigned();
+
             $table->string('employed_by_fresco');
             $table->string('relatives_in_fresco');
             $table->string('relative_name')->nullable();

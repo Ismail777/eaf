@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Education;
 use Illuminate\Http\Request;
+use Session;
 
 class EducationController extends Controller
 {
@@ -36,11 +37,41 @@ class EducationController extends Controller
         $education-> end_date = $request->end_date;
         $education-> cert = $request->cert;
         $education-> cgpa = $request->cgpa;
+        $education->candidate_id= $request->session()->get('candidate_id');
+
         $education->save();
-        $request->session()->put('ed_key', $education->id);
+
+        
+           
+    }
+
+
+    public function storeSecondForm(Request $request)
+    {
+         
+        $this ->validate ($request, array(
+            'school'=>'max:255',
+            'start_date'=>'max:255 ',
+            'end_date'=>'max:255  ',
+            'cert'=>'max:255',
+            'cgpa'=>'max:255'));
+
+        $education = new Education;
+
+        $education-> school = $request->school;
+        $education-> start_date = $request->start_date;
+        $education-> end_date = $request->end_date;
+        $education-> cert = $request->cert;
+        $education-> cgpa = $request->cgpa;
+        $education->candidate_id= $request->session()->get('candidate_id');
+
+        $education->save();
+
         Session::flash ('success', 'The education info has been successfuly saved!');
 
-        return redirect()-> route('employment.create');        
+        return redirect()-> route('employment.create');     
     }
+
+
 
 }

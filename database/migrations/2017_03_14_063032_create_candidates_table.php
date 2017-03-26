@@ -32,12 +32,7 @@ class CreateCandidatesTable extends Migration
             $table->string ('religion');
             $table->string ('race');
             $table->boolean ('interview')->default(false);
-            $table->integer ('position_id')->unsigned()->nullable();
-            $table->integer ('education_id')->unsigned()->nullable();
-            $table->integer ('employment_id')->unsigned()->nullable();
-            $table->integer ('declaration_id')->unsigned()->nullable();
-
-
+           
         });
     }
 

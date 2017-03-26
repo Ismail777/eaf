@@ -15,23 +15,27 @@
     {{form::text ('school', null, array('class' => 'form-control', 'required' => '')) }}
 
   	{{form::label ('start_date', '*2. Start Date/Tempoh Mula::')}}
-  	{{form::date ('start_date', null, array('class' => 'form-control'))}}
+  	{{form::date ('start_date', null, array('class' => 'form-control', 'required' => ''))}}
 
   	{{form::label ('end_date', '*3. End Date/Tempoh Tamal::')}}
-  	{{form::date ('end_date', null, array('class' => 'form-control'))}}
+  	{{form::date ('end_date', null, array('class' => 'form-control','required' => ''))}}
 
   	{{form::label ('cert', '*4. Certificate Obtained/Sijil yang Pernah Anda Dapat:')}}
-  	{{form::text ('cert', null, array('class' => 'form-control'))}}
+  	{{form::text ('cert', null, array('class' => 'form-control','required' => ''))}}
 
   	{{form::label ('cgpa', '*5. CGPA Obtained/<Gred; Pencapaian GPA (jika ada):')}}
-  	{{form::text ('cgpa', null, array('class' => 'form-control'))}}
+  	{{form::text ('cgpa', null, array('class' => 'form-control','required' => ''))}}
+
+    {{Form::close()}}
+
 
   	<h3>Education</h3><i> PENDIDIKAN </i>
+    {!! Form::open(['action' => 'EducationController@storeSecondForm' , 'data-parseley-validate'=> '']) !!} 
 
     {{form::label ('school', '1.  School name/ Nama Sekolah:')}}
     {{form::text ('school', null, array('class' => 'form-control')) }}
 
-  	{{form::label ('start_date', '2. Start Date/Tempoh Mula::')}}
+  	{{form::label ('start_date', '2. Start Date/Tempoh Mula:')}}
   	{{form::date ('start_date', null, array('class' => 'form-control'))}}
 
   	{{form::label ('end_date', '3. End Date/Tempoh Tamal::')}}
@@ -44,7 +48,6 @@
   	{{form::text ('cgpa', null, array('class' => 'form-control'))}}
 
   	{{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-block ' ))}}
-
 
 	{{Form::close()}}
 

@@ -44,13 +44,13 @@ class DeclarationController extends Controller
  	$declaration->illness_type = $request->illness_type;
  	$declaration->jaya_grocer = $request->jaya_grocer;
  	$declaration->fresco = $request->fresco;
+    $declaration->candidate_id= $request->session()->get('candidate_id');
 
  	$declaration -> save();
 
-    $request->session()->put('dec_key', $declaration->id);
     Session::flash ('success', 'The position info has been successfuly saved!');
 
-    return redirect()->route ('candidate.create');
+    return redirect()->route ('candidate.index');
 
 
    }

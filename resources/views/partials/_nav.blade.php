@@ -16,8 +16,30 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li {{ Request::is('/')? 'class=active':'' }}> <a href="/">Home</a></li>
-            <li {{ Request::is('position/create')? 'class=active':'' }}> <a href="/position/create">Join El-fresco</a></li>
-            
+            <li {{ Request::is('personal/create')? 'class=active':'' }}> <a href="/personal/create">Join El-fresco</a></li>
           </ul>
 
-  </div>
+           <ul class="nav navbar-nav navbar-right">
+
+            @if (Auth::check()) 
+
+              <li class="dropdown">
+                <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{Auth::user()->name}} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+                    <li><a href="{{route ('candidate.index') }}">Candidates</a></li>
+
+                    <li role="separator" class="divider"></li>
+                    <li>  {{ Form::open(array('route' => 'logout'), ['method'=>'POST', 'style'=>'display:none;']) }} {{ Form::submit('Logout') }} </form> {{ Form::close () }}</li>
+
+                </ul>
+               </li>
+          @else  
+           <a href="{{route ('login') }}" class="btn btn-default" > Login </a> 
+          @endif
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>

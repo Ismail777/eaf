@@ -16,12 +16,12 @@ class CreateEducationsTable extends Migration
         Schema::create('educations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('candidate_id')->nullable();
-            $table->string('school');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->string('cert');
-            $table->string('cgpa');
+            $table->integer('candidate_id')->nullable()->unsigned();
+            $table->string('school')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->string('cert')->nullable();
+            $table->string('cgpa')->nullable();
         });
     }
 

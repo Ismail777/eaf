@@ -6,7 +6,7 @@
 	<h1 style="margin-top: 100px;">Employment Application Form</h1>
 	<h2 style="margin-bottom: 60px;">1. Personal details:</h2>
 	
-{!! Form::open(['action' => 'CandidateController@store' , 'data-parseley-validate'=> '']) !!} 
+{!! Form::open(['action' => 'personalInfoController@store' , 'data-parseley-validate'=> '']) !!} 
     
     {{form::label ('name', '*1. Name (As appears in your NRIC):')}}
     {{form::text ('name', null, array('class' => 'form-control', 'required' => '', 'maxlength'=>'255' )) }}

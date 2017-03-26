@@ -28,9 +28,14 @@
 	{{form::label ('leave_reason', '*4. Reason For Leaving/Alasan Berhenti Kerja:')}}
     {{form::text ('leave_reason', null, array('class' => 'form-control', 'required' => '', 'maxlength'=>'255')) }}
 
-	<h3>2. COMPANY <i>Syarikat</i> </h3> <br>
+    {!! Form:: close() !!}
+    
 
-	{{form::label ('company', '1. Company Name/Nama Syarikat:')}}
+    
+	<h3>2. COMPANY <i>Syarikat</i> </h3> <br>
+    {!! Form::open(['action' => 'EmploymentController@storeSecondForm' , 'data-parseley-validate'=> '']) !!} 
+    
+   	{{form::label ('company', '1. Company Name/Nama Syarikat:')}}
     {{form::text ('company', null, array('class' => 'form-control', 'maxlength'=>'255' )) }}
 
     {{form::label ('job_title', '2. Job Title/ Jawalan:')}}
@@ -49,7 +54,6 @@
     {{form::text ('leave_reason', null, array('class' => 'form-control', 'maxlength'=>'255')) }}
 
       	 {{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-block	' ))}}
-
 
       	<h3 style="color: red;">* Fields are mandatory </h3>
 

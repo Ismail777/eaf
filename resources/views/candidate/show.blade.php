@@ -4,13 +4,18 @@
 <title>El-fresco| {{$candidate->name }}</title>
 
 @section ('content')
-
+<style type="text/css">
+	table td, table th{
+		border:1px solid black;
+	}
+</style>
 
 
 <div class="row">	
 	<div class="col-md-6">
-			<h1>{{$candidate->name }} </h1>
-		<p class="lead"> Preffred Outlet choice: {{$candidate->position->pre_outlet }} </p> 
+			<h1>Name: {{$candidate->name }} </h1>
+		<p class="lead"> Preffred Outlet choice: {{$candidate->position->pre_outlet}} </p> 
+		<p class="lead"> First Interview Status: {{$candidate->interview}} </p> 
 	</div>
 	<div class="col-md-12">
 			<h3 style="margin: 20px;"> Personal Information </h3>
@@ -70,7 +75,10 @@
 					<td>{{$candidate->position->recomment_name}}</td>
 				</tbody>
 			</table>
+
+
 			<h3 style="margin: 20px;">Education Information</h3>
+				
 			<table>
 				<thead>
 					<th>School/University</th>
@@ -79,14 +87,18 @@
 					<th>Certificate obtained</th>
 					<th>CGPA or Equevilant</th>
 				</thead>
+				@foreach ($educations as $education)
 				<tbody>
-					<td>{{$candidate->education->school}}</td>
-					<td>{{$candidate->education->start_date}}</td>
-					<td>{{$candidate->education->end_date}}</td>
-					<td>{{$candidate->education->cert}}</td>
-					<td>{{$candidate->education->cgpa}}</td>
+					<td>{{ $education->school}}</td>
+					<td>{{ $education->start_date}}</td>
+					<td>{{ $education->end_date}}</td>
+					<td>{{ $education->cert}}</td>
+					<td>{{ $education->cgpa}}</td>
 				</tbody>
 			</table>
+			@endforeach
+
+
 			<h3 style="margin: 20px;">Employment Information</h3>
 			<table>
 				<thead>
@@ -97,16 +109,24 @@
 					<th>End Date</th>
 					<th>Leave Reason(s)</th>
 				</thead>
+				@foreach ($employments as $employment)
 				<tbody>
-					<td>{{$candidate->employment->company}}</td>
-					<td>{{$candidate->employment->job_title}}</td>
-					<td>{{$candidate->employment->ex_salary}}</td>
-					<td>{{$candidate->employment->start_date}}</td>
-					<td>{{$candidate->employment->end_date}}</td>
-					<td>{{$candidate->employment->leave_reason}}</td>
+					<td>{{ $employment->company}}</td>
+					<td>{{ $employment->job_title}}</td>
+					<td>{{ $employment->ex_salary}}</td>
+					<td>{{ $employment->start_date}}</td>
+					<td>{{ $employment->end_date}}</td>
+					<td>{{ $employment->leave_reason}}</td>
 				</tbody>
 			</table>
+			@endforeach
 	</div>
+	<a href="{{route('invite.create')}}" class="btn btn-primary"> Invite for interview </a>
+	<a href="/candidate" class="btn btn-default"> << Back </a>
+	<a href="#" class="btn btn-success">  Print </a>
+	<a href="/candidate" class="btn btn-primary">  Outcome </a>
+
+
 </div>
 			
 

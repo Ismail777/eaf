@@ -8,19 +8,20 @@ class Candidate extends Model
 {
     
 	public function position() {
-		return $this->hasOne ('App\Position','id');
+		return $this->hasOne ('App\Position');
 	}
 
-	public function education() {
-		return $this->hasMany ('App\Education','id');
+	public function educations() {
+		return $this->hasMany ('App\Education');
 	}
 
 
-	public function employment() {
-		return $this->hasMany ('App\Employment','id');
+	public function employments() {
+		return $this->hasMany ('App\Employment','candidate_id');
 	}
 
 	public function declaration() {
-		return $this->hasOne ('App\Declaration','id'); }
+		return $this->hasOne ('App\Declaration');
+	 }
 
 }
