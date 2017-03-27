@@ -16,7 +16,7 @@ class CandidateController extends Controller
 {
 
   public function __construct(){
-        $this ->middleware ('auth') ;  // Limit the featured of this controller to logged in users you may add (except or only is an array)
+        $this ->middleware ('auth:admin') ;  // Limit the featured of this controller to logged in users you may add (except or only is an array)
     }
 
     
