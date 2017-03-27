@@ -50,10 +50,9 @@ Route::post ('declaration/store',['uses'=>'DeclarationController@store','as'=>'d
 //Route::get ('pdf',['uses'=>'CandidateController@show','as'=>'pdf']);
 
 //Admins
-
 	Route::prefix('admin')->group(function() {
-Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+Route::get('/', 'Auth\AdminLoginController@showLoginForm')->name('admin');
+Route::post('/', 'Auth\AdminLoginController@login')->name('admin.submit');
 });
 
 
