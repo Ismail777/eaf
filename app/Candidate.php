@@ -24,4 +24,8 @@ class Candidate extends Model
 		return $this->hasOne ('App\Declaration');
 	 }
 
+	public function outcome() {
+		return $this->hasOne ('App\Outcome');
+	}
+
 }

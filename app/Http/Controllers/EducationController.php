@@ -46,31 +46,6 @@ class EducationController extends Controller
     }
 
 
-    public function storeSecondForm(Request $request)
-    {
-         
-        $this ->validate ($request, array(
-            'school'=>'max:255',
-            'start_date'=>'max:255 ',
-            'end_date'=>'max:255  ',
-            'cert'=>'max:255',
-            'cgpa'=>'max:255'));
-
-        $education = new Education;
-
-        $education-> school = $request->school;
-        $education-> start_date = $request->start_date;
-        $education-> end_date = $request->end_date;
-        $education-> cert = $request->cert;
-        $education-> cgpa = $request->cgpa;
-        $education->candidate_id= $request->session()->get('candidate_id');
-
-        $education->save();
-
-        Session::flash ('success', 'The education info has been successfuly saved!');
-
-        return redirect()-> route('employment.create');     
-    }
 
 
 

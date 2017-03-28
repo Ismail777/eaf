@@ -20,9 +20,16 @@ Route::get ('candidate',['uses'=>'CandidateController@index', 'as'=>'candidate.i
 Route::get ('search',['uses'=>'CandidateController@search', 'as'=>'candidate.search']);
 Route::get ('candidate/{id}',['uses'=>'CandidateController@show', 'as'=>'candidate.show']);
 
-//Invitation Email Routes
-Route::get('invite', ['uses'=>'CandidateController@getInvite ', 'as'=>'invite.create']);
-Route::post('invite', 'CandidateController@postInvite');
+//candidate invitation Email Routes
+//Route::get('invite/{id}', ['uses'=>'CandidateController@getInvitation', 'as'=>'invite.create']);
+//Route::post('invite/{id}', 'CandidateController@postInvite');
+
+
+//candidate outcome Routes
+Route::get('candidate/{id}/outcome', ['uses'=>'OutcomeController@create', 'as'=>'outcome.create']);
+Route::post('candidate/{id}/outcome', 'OutcomeController@store')->name('outcome.store');
+Route::get('candidate/{id}/result', ['uses'=>'OutcomeController@show', 'as'=>'outcome.show']);
+
 
 //Forms Routes
 Route::get ('personal/create',['uses'=>'personalInfoController@create', 'as'=>'personal.create']);
@@ -47,7 +54,7 @@ Route::post ('declaration/store',['uses'=>'DeclarationController@store','as'=>'d
 
 //PDF
 
-//Route::get ('pdf',['uses'=>'CandidateController@show','as'=>'pdf']);
+Route::get ('pdf',['uses'=>'CandidateController@pdf','as'=>'pdf']);
 
 //Admins
 	Route::prefix('admin')->group(function() {

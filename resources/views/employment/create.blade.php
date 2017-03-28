@@ -28,30 +28,6 @@
 	{{form::label ('leave_reason', '*4. Reason For Leaving/Alasan Berhenti Kerja:')}}
     {{form::text ('leave_reason', null, array('class' => 'form-control', 'required' => '', 'maxlength'=>'255')) }}
 
-    {!! Form:: close() !!}
-    
-
-    
-	<h3>2. COMPANY <i>Syarikat</i> </h3> <br>
-    {!! Form::open(['action' => 'EmploymentController@storeSecondForm' , 'data-parseley-validate'=> '']) !!} 
-    
-   	{{form::label ('company', '1. Company Name/Nama Syarikat:')}}
-    {{form::text ('company', null, array('class' => 'form-control', 'maxlength'=>'255' )) }}
-
-    {{form::label ('job_title', '2. Job Title/ Jawalan:')}}
-    {{form::text ('job_title', null, array('class' => 'form-control', 'maxlength'=>'255' )) }}
-
-	{{form::label ('ex_salary', '3. Salary/Gajl:')}}
-    {{form::text ('ex_salary', null, array('class' => 'form-control', 'maxlength'=>'255' )) }}
-
-    {{form::label ('start_date', '4. Start Date/Tempoh Mula:')}}
-    {{form::date ('start_date', null, array('class' => 'form-control', 'date')) }}
-
-	{{form::label ('end_date', '4. End Date/Tempoh Tamat:')}}
-    {{form::date ('end_date', null, array('class' => 'form-control' , 'date')) }}
-
-	{{form::label ('leave_reason', '4. Reason For Leaving/Alasan Berhenti Kerja:')}}
-    {{form::text ('leave_reason', null, array('class' => 'form-control', 'maxlength'=>'255')) }}
 
       	 {{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-block	' ))}}
 

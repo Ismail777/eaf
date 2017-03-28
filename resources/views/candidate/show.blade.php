@@ -10,14 +10,25 @@
 	}
 </style>
 
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-8 col-md-offset-8">
+	<a href="#" class="btn btn-primary"> Invite for interview </a>
+	<a href="{{route('candidate.index')}}" class="btn btn-default"> << Back </a>
+	<a href="{{route('outcome.create')}}" class="btn btn-primary"> Input Outcome </a>w
+	<a href="{{route('pdf')}}" class="btn btn-success">  Print </a>
+	</div>
+</div>
+	
 
 <div class="row">	
-	<div class="col-md-6">
+	<div class="col-md-6 col-md-offset-2">
 			<h1>Name: {{$candidate->name }} </h1>
 		<p class="lead"> Preffred Outlet choice: {{$candidate->position->pre_outlet}} </p> 
 		<p class="lead"> First Interview Status: {{$candidate->interview}} </p> 
 	</div>
-	<div class="col-md-12">
+	<div class="col-md-12 col-md-offset-1">
 			<h3 style="margin: 20px;"> Personal Information </h3>
 			<table class="table">
 		 	 <thead>
@@ -121,13 +132,5 @@
 			</table>
 			@endforeach
 	</div>
-	<a href="{{route('invite.create')}}" class="btn btn-primary"> Invite for interview </a>
-	<a href="/candidate" class="btn btn-default"> << Back </a>
-	<a href="#" class="btn btn-success">  Print </a>
-	<a href="/candidate" class="btn btn-primary">  Outcome </a>
-
-
-</div>
 			
-
 @endsection

@@ -19,12 +19,6 @@ class CandidateController extends Controller
         $this ->middleware ('auth:admin') ;  // Limit the featured of this controller to logged in users you may add (except or only is an array)
     }
 
-    
-
-    public function getInvite(){
-
-        return view ('candidate.emailForm');
-    }
 
     public function index()
     {
@@ -42,23 +36,38 @@ class CandidateController extends Controller
         $candidates = Candidate::where('name','like','%'.$search.'%')->orderBy('id')->paginate(3); 
         return view ('candidate.index')->withCandidates($candidates);
    }
+    public function pdf (Request $request){
 
+        if ($request->has ('download')){
+        $data = array('candidate' =>Candidate::find ($id) ,
+            'educations'=> Education::where('candidate_id',$candidate->id)->get(),
+            'employments'=>Employment::where('candidate_id',$candidate->id)->get());
+        
+             $pdf = PDF::loadView('candidate.show',$data);
+             return $pdf->download('candidate.show');
+        }
+    }
 
     public function show($id,Request $request)
     {
-        $candidate= candidate::find ($id);
+        $candidate= Candidate::find ($id);
         $educations = Education::where('candidate_id',$candidate->id)->get();
         $employments = Employment::where('candidate_id',$candidate->id)->get();
-
-        if ($request->has ('download')){
-             $pdf = PDF::loadView('candidate.show');
-             return $pdf->download('candidate.show');
-        }
 
         return view ('candidate.show')-> with ('candidate', $candidate)->with ('educations',$educations)->with ('employments',$employments);
     }
 
+    public function outcome($id,Request $request)
+    {
+        $candidate= Candidate::find ($id);
+        return view ('candidate.outcome')->with ('candidate', $candidate);
 
+    }
+
+    public function getInvitation($id,Request $request){
+
+        return view ('candidate.emailForm');
+    }
 
     public function postInvite($id, Request $request){
 

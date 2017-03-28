@@ -26,11 +26,7 @@
   	{{form::label ('cgpa', '*5. CGPA Obtained/<Gred; Pencapaian GPA (jika ada):')}}
   	{{form::text ('cgpa', null, array('class' => 'form-control','required' => ''))}}
 
-    {{Form::close()}}
-
-
   	<h3>Education</h3><i> PENDIDIKAN </i>
-    {!! Form::open(['action' => 'EducationController@storeSecondForm' , 'data-parseley-validate'=> '']) !!} 
 
     {{form::label ('school', '1.  School name/ Nama Sekolah:')}}
     {{form::text ('school', null, array('class' => 'form-control')) }}
