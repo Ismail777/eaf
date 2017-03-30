@@ -13,7 +13,7 @@ class OutcomeController extends Controller
   public function create($id,Request $request)
     {
         $candidate= Candidate::find ($id);
-        return view ('candidate.outcome')->with ('candidate', $candidate);
+        return view ('outcome.create')->with ('candidate', $candidate);
 
     }
    public function store($candidateId, Request $request){

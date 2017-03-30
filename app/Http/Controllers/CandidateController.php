@@ -36,16 +36,27 @@ class CandidateController extends Controller
         $candidates = Candidate::where('name','like','%'.$search.'%')->orderBy('id')->paginate(3); 
         return view ('candidate.index')->withCandidates($candidates);
    }
-    public function pdf (Request $request){
 
-        if ($request->has ('download')){
-        $data = array('candidate' =>Candidate::find ($id) ,
-            'educations'=> Education::where('candidate_id',$candidate->id)->get(),
-            'employments'=>Employment::where('candidate_id',$candidate->id)->get());
+
+   public function pdf ($id,Request $request){
+    $candidate = Candidate::find($id);
+    $educations = Education::where('candidate_id',$candidate->id)->get();
+    $employments = Employment::where('candidate_id',$candidate->id)->get();
+    $data =compact('candidate','educations','employments') ;
+    $pdf = PDF::loadview('candidate.show',$data);
+    return $pdf->download ('candidate.pdf');
+
         
-             $pdf = PDF::loadView('candidate.show',$data);
-             return $pdf->download('candidate.show');
-        }
+    } 
+
+    public function interviewUpdate ($id){
+      $candidate = Candidate::find($id);
+      
+          $candidate->interview = 1;
+          $candidate->save();
+      Session::flash ('success', 'Interview status has been updated.');
+      return back();
+    
     }
 
     public function show($id,Request $request)
@@ -57,33 +68,29 @@ class CandidateController extends Controller
         return view ('candidate.show')-> with ('candidate', $candidate)->with ('educations',$educations)->with ('employments',$employments);
     }
 
-    public function outcome($id,Request $request)
-    {
-        $candidate= Candidate::find ($id);
-        return view ('candidate.outcome')->with ('candidate', $candidate);
+    
 
-    }
-
-    public function getInvitation($id,Request $request){
-
-        return view ('candidate.emailForm');
+    public function getInvitation($id ){
+        $candidate = Candidate::Find($id);
+        return view ('candidate.emailForm')->with ('candidate', $candidate);
     }
 
     public function postInvite($id, Request $request){
+            $this->validate ($request, [
+                  'body'=>'min:10',
+                  'subject'=>'min:3']);
 
-        $candidate= candidate::find ($id);
-
+        $candidate= Candidate::Find ($id);
         $data = array('email'=> $candidate->email
                     , 'subject'=> $request->subject
-                    , 'bodyMessage'=> $request->message );
-      Mail::send('emails.contact', $data, function($message) use  ($data){  //Mail::queue is to send many mails data can be accessed in the view as it is
-        $message->from('fresco_marketing@gmail.com');
+                    , 'bodyMessage'=> $request->body );
+      Mail::send('candidate.InvitationEmail ', $data, function($message) use  ($data){  //Mail::queue is to send many mails data can be accessed in the view as it is
+        $message->from('hr_eaf@fresco.com.my');
           $message->to($data['email']);
-            $message->subject($data['subject']);
-              
+            $message->subject($data['subject']);        
       });  
-        Session::flash ('success', 'Your Email Was Sent!');
-      return redirect('/candidate');
+      Session::flash ('success', 'Your Email Was Sent!');
+      return back();
 
     }
 
@@ -112,6 +119,10 @@ class CandidateController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $candidate= Candidate::find($id);
+         $candidate -> delete();
+        Session::flash ('success', 'The candidate has been successfuly deleted');
+        return redirect ()-> route('candidate.index');
+      }
 }
+

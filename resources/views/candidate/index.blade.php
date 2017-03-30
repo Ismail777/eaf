@@ -13,14 +13,13 @@
 	
 		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			<button type="submit" class="btn btn-success btn-lg"></button>
-			
 		</span>
 		{!! Form::close() !!}
 	</div>
 
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-15">
 			<table class="table">
 		 	 <thead>
 		 	 	<th>#</th>
@@ -41,7 +40,8 @@
 		 	 	<td>{{$candidate->position->position }} </td>
 		 	 	<td>{{ date ( 'jS, M,y  G:i' , strtotime ($candidate->created_at) )}}</td>
 		 	 	<td><a href="{{route('candidate.show', $candidate->id) }}" class="btn btn-default"> View Candidate</a></td>
-		 	 	<td><a href="{{route('outcome.show', $candidate->id)}}" class="btn btn-primary">  View Outcome </a></td>
+		 	 	<td><a href="{{route('outcome.show', $candidate->id)}}" class="btn btn-default">  View Outcome </a></td>
+		 	 	<td><a href="{{route('candidate.delete', $candidate->id)}}" class="btn btn-danger"> Delete Candidate </a></td>
 
 		 	 	</tr>
 

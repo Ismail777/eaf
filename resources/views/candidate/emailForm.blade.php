@@ -5,23 +5,24 @@
 @section('content')
         <div class="row">
             <div class="col-md-12">
-                <h1>Email Candidate</h1>
+                
+                <h1>Email Candidate</h1><strong>{{$candidate->name}}</strong>
                 <hr>
-                <form action="{{ url('invite')}}" method="POST">  
-                {{ csrf_field()}}
-                  
-                    <div class="form-group">
-                        <label name="subject">Subject:</label>
-                        <input id="subject" name="subject" class="form-control">
-                    </div>
 
-                    <div class="form-group">
-                        <label name="message">Message:</label>
-                        <textarea id="message" name="message" class="form-control">Type your message here...</textarea>
-                    </div>
+              {{Form::model ($candidate, ['route'=>['invite.post', $candidate->id], 'method'=>'POST'])}}
 
-                    <input type="submit" value="Send Message" class="btn btn-success">
-                </form>
+                {{Form::label ('email', 'Email:')}}
+                {{Form::text ('email', null, ['class'=>'form-control', 'disabled'=>''])}}
+
+                {{Form::label ('subject', 'Subject:')}}
+                {{Form::text ('subject', null, ['class'=>'form-control']) }}
+
+                {{Form::label ('body', 'Email Body:')}}
+                {{Form::textarea ('body', null, ['class'=>'form-control']) }}
+
+                {{Form::submit ('Send Email', ['class'=>'btn btn-block btn-success', 'style'=>'margin-top:15px;'])}}
+
+                {{Form::close()}}
             </div>
         </div>
 @endsection

@@ -19,10 +19,13 @@ Route::get('/', function () {
 Route::get ('candidate',['uses'=>'CandidateController@index', 'as'=>'candidate.index']);
 Route::get ('search',['uses'=>'CandidateController@search', 'as'=>'candidate.search']);
 Route::get ('candidate/{id}',['uses'=>'CandidateController@show', 'as'=>'candidate.show']);
+Route::get ('candidate/{id}/delete',['uses'=>'CandidateController@delete', 'as'=>'candidate.delete']);
+Route::get ('candidate/{id}/update',['uses'=>'CandidateController@interviewUpdate', 'as'=>'interview']);
+
 
 //candidate invitation Email Routes
-//Route::get('invite/{id}', ['uses'=>'CandidateController@getInvitation', 'as'=>'invite.create']);
-//Route::post('invite/{id}', 'CandidateController@postInvite');
+Route::get('candidate/{id}/invite', ['uses'=>'CandidateController@getInvitation', 'as'=>'invite.create']);
+Route::post('candidate/{id}/invite', 'CandidateController@postInvite')->name('invite.post');
 
 
 //candidate outcome Routes
@@ -53,8 +56,8 @@ Route::post ('declaration/store',['uses'=>'DeclarationController@store','as'=>'d
 
 
 //PDF
+Route::get('pdf/{id}',['uses'=>'CandidateController@pdf','as'=>'pdf']);
 
-Route::get ('pdf',['uses'=>'CandidateController@pdf','as'=>'pdf']);
 
 //Admins
 	Route::prefix('admin')->group(function() {
