@@ -41,6 +41,11 @@ class EducationController extends Controller
 
         $education->save();
 
+         Session::flash ('success', 'The candidate education form has been successfuly completed!');
+         
+         return redirect()->route('employment.create');
+
+
         
            
     }

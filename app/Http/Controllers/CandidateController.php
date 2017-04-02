@@ -33,7 +33,7 @@ class CandidateController extends Controller
    public function search(){
 
         $search = \Request::get('search');
-        $candidates = Candidate::where('name','like','%'.$search.'%')->orderBy('id')->paginate(3); 
+        $candidates = Candidate::where('name','like','%'.$search.'%')->orderBy('id')->paginate(5); 
         return view ('candidate.index')->withCandidates($candidates);
    }
 

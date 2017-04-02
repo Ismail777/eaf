@@ -56,7 +56,7 @@ Route::post ('declaration/store',['uses'=>'DeclarationController@store','as'=>'d
 
 
 //PDF
-Route::get('pdf/{id}',['uses'=>'CandidateController@pdf','as'=>'pdf']);
+		Route::get('pdf/{id}',['uses'=>'CandidateController@pdf','as'=>'pdf']);
 
 
 //Admins
