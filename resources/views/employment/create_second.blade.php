@@ -1,15 +1,11 @@
 @extends ('Main')
 
-<head><title>Employment Application</title></head>
-
 @section ('content')
+<a href="{{route('employment.create')}}" class="btn btn-lg btn-default">Back </a>
 
-		<h1 style="margin-top: 100px;">Employment Application Form</h1>
-	<h2 style="margin-bottom: 60px;">4. Employment details:</h2>
-	
-{!! Form::open(['action' => 'EmploymentController@store' , 'data-parseley-validate'=> '']) !!} 
+{!! Form::open(['action' => 'EmploymentController@storeSecondForm' , 'data-parseley-validate'=> '']) !!} 
     
-    <h3>1. COMPANY (MOST RECENT or CURRENT COMPANY) <i> SYARIKAT (SYARIKAT TERKINI atau SEMASA)</i></h3><br>
+    <h3>Add A Company Record</h3><br>
     {{form::label ('company', '*1. Company Name/Nama Syarikat:')}}
     {{form::text ('company', null, array('class' => 'form-control', 'required' => '', 'maxlength'=>'255' )) }}
 
@@ -27,11 +23,10 @@
 
 	{{form::label ('leave_reason', '*4. Reason For Leaving/Alasan Berhenti Kerja:')}}
     {{form::text ('leave_reason', null, array('class' => 'form-control', 'required' => '', 'maxlength'=>'255')) }}
-        <a href="{{route('employment.create2')}}" class="btn btn-default btn-block">Add a second employment record</a>
 
-      	 {{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-block	' ))}}
 
-      	<h3 style="color: red;">* Fields are mandatory </h3>
+      	 {{form::submit ('Add', array ('class' => 'btn btn-success btn-lg btn-block	' ))}}
+
 
 {!! Form::close () !!}
 

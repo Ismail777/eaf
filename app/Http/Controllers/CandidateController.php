@@ -43,7 +43,11 @@ class CandidateController extends Controller
     $educations = Education::where('candidate_id',$candidate->id)->get();
     $employments = Employment::where('candidate_id',$candidate->id)->get();
     $data =compact('candidate','educations','employments') ;
-    $pdf = PDF::loadview('candidate.show',$data);
+
+      //return view ('candidate.show_pdf')->with ();
+
+    $pdf = PDF::loadview('candidate.show_pdf',['candidate'=>$candidate,'educations'
+          =>$educations[],'employments'=>$employments[] ]);
     return $pdf->download ('candidate.pdf');
 
         
@@ -96,8 +100,9 @@ class CandidateController extends Controller
 
     public function edit($id)
     {
-        //
-    }
+         $candidate = Candidate::find($id);
+        return view ('candidate.edit') -> with ('candidate', $candidate);
+      }
 
     /**
      * Update the specified resource in storage.
@@ -108,8 +113,42 @@ class CandidateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+           $this ->validate ($request, array('name' => 'required | max:255' ,
+                                        'nric' => 'required' ,
+                                        'address' => 'required | max:255 ' ,
+                                        'mobile_no'=>'required'
+                                        ,'email'=>'required|max:255'
+                                        ,'birthday'=>'required'
+                                        ,'epf'=>'max:255'
+                                       
+                                        ,'martial_status'=>'required | max:255'
+                                        ,'spouse_occupation'=>'max:255'
+                                        ,'kids_no'=>''
+                                       
+                                    
+                                        )) ;
+       $candidate = Candidate::find ($id);
+        $candidate -> name = $request -> input('name');
+        $candidate -> nric = $request -> input('nric');
+        $candidate -> address = $request -> input('address');
+        $candidate -> mobile_no = $request -> input('mobile_no');
+        $candidate -> email = $request -> input('email');
+        $candidate -> birthday = $request -> input('birthday');
+        $candidate -> epf = $request -> input('epf');
+        $candidate -> martial_status = $request -> input('martial_status');
+        $candidate -> spouse_occupation = $request -> input('spouse_occupation');
+        $candidate -> kids_no = $request -> input('kids_no');
+        
+
+        $candidate->save();
+        Session::flash ('success', 'Candidates info has been changes.');
+
+        return redirect()->route('candidate.show', $candidate->id);
+
+
+
+
+       }
 
     /**
      * Remove the specified resource from storage.

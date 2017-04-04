@@ -41,7 +41,7 @@
 		 	 	<td>{{ date ( 'jS, M,y  G:i' , strtotime ($candidate->created_at) )}}</td>
 		 	 	<td><a href="{{route('candidate.show', $candidate->id) }}" class="btn btn-default"> View Candidate</a></td>
 		 	 	<td><a href="{{route('outcome.show', $candidate->id)}}" class="btn btn-default">  View Outcome </a></td>
-		 	 	<td><a href="{{route('candidate.delete', $candidate->id)}}" class="btn btn-danger"> Delete Candidate </a></td>
+		 	 	<td><a href="{{route('candidate.destroy', $candidate->id)}}" class="btn btn-danger"> Delete Candidate </a></td>
 
 		 	 	</tr>
 

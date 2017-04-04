@@ -10,6 +10,9 @@ use App\Outcome;
 class OutcomeController extends Controller
 {
   
+   public function __construct(){
+        $this ->middleware ('auth:admin') ; 
+        
   public function create($id,Request $request)
     {
         $candidate= Candidate::find ($id);
@@ -35,7 +38,6 @@ class OutcomeController extends Controller
 
    public function show ($candidateId){
    	$candidate = Candidate::find ($candidateId);
-  // 	$outcome = Outcome::where ('candidate_id',$candidateId);
    	return view ('outcome.show')->with ('candidate',$candidate);
 
    }

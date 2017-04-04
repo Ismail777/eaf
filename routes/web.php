@@ -16,10 +16,8 @@ Route::get('/', function () {
 });
 
 //candidate Routes
-Route::get ('candidate',['uses'=>'CandidateController@index', 'as'=>'candidate.index']);
 Route::get ('search',['uses'=>'CandidateController@search', 'as'=>'candidate.search']);
-Route::get ('candidate/{id}',['uses'=>'CandidateController@show', 'as'=>'candidate.show']);
-Route::get ('candidate/{id}/delete',['uses'=>'CandidateController@delete', 'as'=>'candidate.delete']);
+Route::resource ('candidate' , 'CandidateController');
 Route::get ('candidate/{id}/update',['uses'=>'CandidateController@interviewUpdate', 'as'=>'interview']);
 
 
@@ -50,9 +48,10 @@ Route::post ('employment/store',['uses'=>'EmploymentController@store','as'=>'emp
 Route::get ('declaration/create',['uses'=>'DeclarationController@create', 'as'=>'declaration.create']);
 Route::post ('declaration/store',['uses'=>'DeclarationController@store','as'=>'declaration.store']);
 
-
-//Route::post ('empStoreSecondForm',['uses'=>'EmploymentController@storeSecondForm','as'=>'employment.store2']);
-//Route::post ('edStoreSecondForm',['uses'=>'EducationController@storeSecondForm','as'=>'education.store2']);
+Route::get ('employment/create/2',['uses'=>'EmploymentController@createSecondForm', 'as'=>'employment.create2']);
+Route::get ('education/create/2',['uses'=>'EducationController@createSecondForm', 'as'=>'education.create2']);
+Route::post ('empStoreSecondForm',['uses'=>'EmploymentController@storeSecondForm','as'=>'employment.store2']);
+Route::post ('edStoreSecondForm',['uses'=>'EducationController@storeSecondForm','as'=>'education.store2']);
 
 
 //PDF

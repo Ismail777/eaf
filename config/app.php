@@ -165,6 +165,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -230,8 +232,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
+        //'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
         //'PDF' => Barryvdh\DomPDF\Facade::class,
+        'PDF'=>Barryvdh\Snappy\Facades\SnappyPdf::class,
+        //'SnappyImage'=>Barryvdh\Snappy\Facades\SnappyImage::class,
 
     ],
 
