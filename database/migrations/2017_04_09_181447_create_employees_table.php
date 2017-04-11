@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOutcomesTable extends Migration
+class CreateEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateOutcomesTable extends Migration
      */
     public function up()
     {
-        Schema::create('outcomes', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer ('candidate_id')->unsigned();
-            $table->string ('outcome');
-            $table->string ('remarks')->nullable();
+            $table->integer('candidate_id')->unsigned();
+            $table->string('name');
+            $table->string('position');
+            $table->string('salary');
+            $table->string('outlet');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateOutcomesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('outcomes');
+        Schema::dropIfExists('employees');
     }
 }

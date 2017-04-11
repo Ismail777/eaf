@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Declaration;
 use Session;
+use App\Candidate;
 
 class DeclarationController extends Controller
 {
@@ -48,11 +49,16 @@ class DeclarationController extends Controller
 
  	$declaration -> save();
 
-    Session::flash ('success', 'The position info has been successfuly saved!');
-
-    return redirect()->route ('candidate.index');
+    return redirect()->route ('form_complete.create',$candidate_id);
 
 
    }
+
+   public function getFormComplete($id){
+
+        $candidate = Candidate::find ($id);
+        return view ('form_complete')->with ('candidate',$candidate);
+   }
+
 
 }   

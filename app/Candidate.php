@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Candidate extends Model
 {
-    
+     
+     public function employee(){
+    	return $this->belongsTo ('App\Employee');
+    }
+
 	public function position() {
 		return $this->hasOne ('App\Position');
 	}

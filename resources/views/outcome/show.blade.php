@@ -9,7 +9,9 @@
 			<strong>{{$candidate->outcome->outcome}}</strong><br><br>
 			<h3>Remarks:</h3><br>
 			<p>{{$candidate->outcome->remarks}}</p>
-
+		@if ($candidate->outcome->outcome === "Approved")
+    		<a href="{{route('employee.create',$candidate->id)}}" class="btn btn-lg btn-primary">Create An Employee Contract</a>
+    	@endif
 		</div>
 	</div>
 	

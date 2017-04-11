@@ -14,11 +14,17 @@
                 {{Form::label ('email', 'Email:')}}
                 {{Form::text ('email', null, ['class'=>'form-control', 'disabled'=>''])}}
 
-                {{Form::label ('subject', 'Subject:')}}
-                {{Form::text ('subject', null, ['class'=>'form-control']) }}
+                {{Form::label ('time', 'Time & Date:')}}
+                {{Form::text ('time', null, ['class'=>'form-control']) }}
 
-                {{Form::label ('body', 'Email Body:')}}
-                {{Form::textarea ('body', null, ['class'=>'form-control']) }}
+                {{Form::label ('place', 'place:')}}
+                {{Form::text ('place', null, ['class'=>'form-control']) }}
+
+                {{Form::label ('interviewer', 'Interviewer Name:')}}
+                {{Form::text ('interviewer', null, ['class'=>'form-control']) }}
+                
+                {{Form::label ('notes', 'Additional Notes:')}}
+                {{Form::textarea ('notes', null, ['class'=>'form-control', 'placeholder'=>'Documents to bring ..etc.']) }}
 
                 {{Form::submit ('Send Email', ['class'=>'btn btn-block btn-success', 'style'=>'margin-top:15px;'])}}
 

@@ -18,6 +18,7 @@
    
  @yield('scripts')
 
+@include ('partials._footer');
  </body>
 
 </html>

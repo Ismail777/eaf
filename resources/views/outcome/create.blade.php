@@ -16,7 +16,7 @@
 
 	{{Form::textarea('remarks', null,['class'=>'form-control'])}}
 	{{Form::submit ('Submit')}}
-	<a href="#" class="btn btn-primary">Invite again</a>
+	<a href="{{route('invite.create',$candidate->id)}}" class="btn btn-primary">Invite again</a>
 	{!! Form::close() !!}
 
 

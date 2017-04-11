@@ -14,6 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//Employee routes:
+Route::resource ('employee' , 'EmployeeController', ['except'=>['create','store']]);
+Route::get ('employee/{employee}/create',['uses'=>'EmployeeController@create' ,'as'=>'employee.create']);
+Route::post ('employee/{employee}/store',['uses'=>'EmployeeController@store' ,'as'=>'employee.store']);
+Route::get ('search_employee',['uses'=>'EmployeeController@search', 'as'=>'employee.search']);
+
+
 
 //candidate Routes
 Route::get ('search',['uses'=>'CandidateController@search', 'as'=>'candidate.search']);
@@ -21,10 +28,15 @@ Route::resource ('candidate' , 'CandidateController');
 Route::get ('candidate/{id}/update',['uses'=>'CandidateController@interviewUpdate', 'as'=>'interview']);
 
 
-//candidate invitation Email Routes
-Route::get('candidate/{id}/invite', ['uses'=>'CandidateController@getInvitation', 'as'=>'invite.create']);
-Route::post('candidate/{id}/invite', 'CandidateController@postInvite')->name('invite.post');
 
+//candidate Emails Routes
+Route::get ('candidate/{id}/complete',['uses'=>'DeclarationController@getFormComplete', 'as'=>'form_complete.create']);
+Route::get('candidate/{id}/invite', ['uses'=>'EmailsController@getInvitation', 'as'=>'invite.create']);
+Route::post('candidate/{id}/invite', 'EmailsController@postInvite')->name('invite.post');
+Route::post('candidate/{id}/E_profile', 'EmailsController@postProfile')->name('E_profile.post');
+Route::get ('test',function (){
+	dd (Config::get('mail'));
+});
 
 //candidate outcome Routes
 Route::get('candidate/{id}/outcome', ['uses'=>'OutcomeController@create', 'as'=>'outcome.create']);

@@ -40,15 +40,14 @@ class CandidateController extends Controller
 
    public function pdf ($id,Request $request){
     $candidate = Candidate::find($id);
-    $educations = Education::where('candidate_id',$candidate->id)->get();
-    $employments = Employment::where('candidate_id',$candidate->id)->get();
-    $data =compact('candidate','educations','employments') ;
+    $educations = Education::where('candidate_id',$candidate->id)->get()->toArray();
+    $employments = Employment::where('candidate_id',$candidate->id)->get()->toArray();
 
-      //return view ('candidate.show_pdf')->with ();
-
-    $pdf = PDF::loadview('candidate.show_pdf',['candidate'=>$candidate,'educations'
-          =>$educations[],'employments'=>$employments[] ]);
-    return $pdf->download ('candidate.pdf');
+   // $data =compact('candidate','educations','employments') ;
+   // dd($data);
+      
+   $pdf = PDF::loadview('candidate.show_pdf',['candidate'=>$candidate,'educations'=>$educations,'employments'=>$employments]);
+       return $pdf->stream ('candidate.pdf');
 
         
     } 
@@ -69,34 +68,13 @@ class CandidateController extends Controller
         $educations = Education::where('candidate_id',$candidate->id)->get();
         $employments = Employment::where('candidate_id',$candidate->id)->get();
 
-        return view ('candidate.show')-> with ('candidate', $candidate)->with ('educations',$educations)->with ('employments',$employments);
+        return view ('candidate.show') -> with ('candidate', $candidate)->with ('educations',$educations)->with ('employments',$employments);
+
     }
 
     
 
-    public function getInvitation($id ){
-        $candidate = Candidate::Find($id);
-        return view ('candidate.emailForm')->with ('candidate', $candidate);
-    }
-
-    public function postInvite($id, Request $request){
-            $this->validate ($request, [
-                  'body'=>'min:10',
-                  'subject'=>'min:3']);
-
-        $candidate= Candidate::Find ($id);
-        $data = array('email'=> $candidate->email
-                    , 'subject'=> $request->subject
-                    , 'bodyMessage'=> $request->body );
-      Mail::send('candidate.InvitationEmail ', $data, function($message) use  ($data){  //Mail::queue is to send many mails data can be accessed in the view as it is
-        $message->from('hr_eaf@fresco.com.my');
-          $message->to($data['email']);
-            $message->subject($data['subject']);        
-      });  
-      Session::flash ('success', 'Your Email Was Sent!');
-      return back();
-
-    }
+   
 
     public function edit($id)
     {
@@ -104,13 +82,9 @@ class CandidateController extends Controller
         return view ('candidate.edit') -> with ('candidate', $candidate);
       }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
+
     public function update(Request $request, $id)
     {
            $this ->validate ($request, array('name' => 'required | max:255' ,
@@ -119,15 +93,13 @@ class CandidateController extends Controller
                                         'mobile_no'=>'required'
                                         ,'email'=>'required|max:255'
                                         ,'birthday'=>'required'
-                                        ,'epf'=>'max:255'
-                                       
+                                        ,'epf'=>'max:255'    
                                         ,'martial_status'=>'required | max:255'
                                         ,'spouse_occupation'=>'max:255'
                                         ,'kids_no'=>''
                                        
-                                    
-                                        )) ;
-       $candidate = Candidate::find ($id);
+                                                                    )) ;
+        $candidate = Candidate::find ($id);
         $candidate -> name = $request -> input('name');
         $candidate -> nric = $request -> input('nric');
         $candidate -> address = $request -> input('address');

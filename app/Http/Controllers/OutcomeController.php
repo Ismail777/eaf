@@ -12,6 +12,7 @@ class OutcomeController extends Controller
   
    public function __construct(){
         $this ->middleware ('auth:admin') ; 
+      }
         
   public function create($id,Request $request)
     {
@@ -41,5 +42,7 @@ class OutcomeController extends Controller
    	return view ('outcome.show')->with ('candidate',$candidate);
 
    }
+
+  
 
 }
