@@ -4,23 +4,24 @@
 
 @section ('content')
 
-	<div class="row">
-	  <div class="col-md-6"> <h1>All Employees</h1> </div>
-	</div>
-	<div class="col-md-6">
-		{!! Form::open(['method'=>'GET', 'route'=>'employee.search']) !!}
-		<input type="text" name="search" class="form-control" placeholder="Search..">
 	
-		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-			<button type="submit" class="btn btn-success btn-lg"></button>
-		</span>
-		{!! Form::close() !!}
+	 <h1>All Employees</h1> 
+	
+	<div class="col-md-6">
+		{!! Form::open(['method'=>'GET', 'route'=>'candidate.search']) !!}
+			<input type="text" name="search" class="form-control" placeholder="Search..">
+			<span class="input-group-btn">
+			<button type="submit" class="btn btn-default btn-lg">
+			<i class="glyphicon glyphicon-search" ></i>
+			</button>
+			</span>
+			{!! Form::close() !!}
 	</div>
 
 
 	<div class="row">
-		<div class="col-md-15">
-			<table class="table">
+		<div class="col-lg-12">
+			<table class="table table-striped">
 		 	 <thead>
 		 	 	<th>#</th>
 		 	 	<th>Name</th>

@@ -4,39 +4,34 @@
 <title>El-fresco| {{$candidate->name }}</title>
 
 @section ('content')
-<style type="text/css">
-	table td, table th{
-		border:1px solid black;
-	}
-</style>
-
 	</div>
 </div>
-<div class="row">
-	<div class="col-sm-8 col-md-offset-8">
-	<a href="{{route('candidate.index')}}" class="btn btn-default"> << Back </a>
-	<a href="{{route('outcome.create',$candidate->id)}}" class="btn btn-primary"> Input Outcome </a>
-	<a href="{{route('invite.create',$candidate->id)}}" class="btn btn-primary"> Invite Candidate </a>
-	<a href="{{route('pdf',$candidate->id)}}" class="btn btn-success">  Print </a>
-	<a href="{{route('candidate.edit',$candidate->id)}}" class="btn btn-success">  Edit Personal Info </a>
 
-	</div>
-</div>
+	
 	
 
 <div class="row">	
-	<div class="col-md-6 col-md-offset-2">
+	<div class="col-md-6 col-md-offset-1">
 			<h1>Name: {{$candidate->name }} </h1>
 		<p class="lead"> Preffred Outlet choice: {{$candidate->position->pre_outlet}} </p> 
 		<p class="lead"> First Interview Status: 
 		@if ($candidate->interview===0) Hasn't been performed 
 		@else Already been performed 
 		@endif <a href="{{route('interview',$candidate->id)}}" class="btn btn-sm btn-default">Update Interview Status</a> </p> 
+	</div>
+
+	<div class="col-md-2 ">
+	<a href="{{route('candidate.index')}}" class="btn btn-default btn-block"> << Back </a>
+	<a href="{{route('outcome.create',$candidate->id)}}" class="btn  btn-default btn-block"> Input Outcome </a>
+	<a href="{{route('invite.create',$candidate->id)}}" class="btn btn-default btn-block"> Invite Candidate </a>
+	
+	<a href="{{route('candidate.edit',$candidate->id)}}" class="btn btn-default btn-block">  Edit Personal Info </a>
+	<a href="{{route('pdf',$candidate->id)}}" class="btn btn-success btn-block">  Print </a>
 
 	</div>
-	<div class="col-md-12 col-md-offset-1">
-			<h3 style="margin: 20px;"> Personal Information </h3>
-			<table class="table">
+	<div class="col-md-9 col-md-offset-1">
+			<h3> Personal Information </h3>
+			<table class="table table-bordered">
 		 	 <thead>
 		 	 	<th>address</th>
 		 	 	<th>mobile_no</th>
@@ -71,8 +66,8 @@
 
 		 	 </tbody>
 			</table>
-			<h3 style="margin: 20px;">Position and Interview Information</h3>
-			<table>
+			<h3>Position and Interview Information</h3>
+			<table class="table table-bordered">
 				<thead>
 					<th>Interview time</th>
 					<th>Interview date</th>
@@ -94,9 +89,9 @@
 			</table>
 
 
-			<h3 style="margin: 20px;">Education Information</h3>
+			<h3>Education Information</h3>
 				
-			<table>
+			<table class="table table-bordered">
 				<thead>
 					<th>School/University</th>
 					<th>Starting date</th>
@@ -116,8 +111,8 @@
 			@endforeach
 
 
-			<h3 style="margin: 20px;">Employment Information</h3>
-			<table>
+			<h3 >Employment Information</h3>
+			<table class="table table-bordered">
 				<thead>
 					<th>Company</th>
 					<th>Job Title</th>

@@ -1,3 +1,4 @@
+
   <!-- Default Bootstrap Navbar -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -9,12 +10,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">El-Fresco Marketing</a>
+          <a class="navbar-brand" href="#" ><img src="https://siva.jsstatic.com/my/100125/images/logo/100125_logo_0_81232.png" alt="logo" height="30" width="70"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav" style="color: white" >
             <li {{ Request::is('/')? 'class=active':'' }}> <a href="/">Home</a></li>
             <li {{ Request::is('personal/create')? 'class=active':'' }}> <a href="/personal/create">Join El-fresco</a></li>
           </ul>
@@ -28,7 +29,7 @@
                 <ul class="dropdown-menu">
 
                     <li><a href="{{route ('candidate.index') }}">Candidates</a></li>
-
+                     <li><a href="{{route ('employee.index') }}">Employees</a></li>
                     <li role="separator" class="divider"></li>
                     <li>  {{ Form::open(array('route' => 'logout'), ['method'=>'POST', 'style'=>'display:none;']) }} {{ Form::submit('Logout') }} </form> {{ Form::close () }}</li>
 

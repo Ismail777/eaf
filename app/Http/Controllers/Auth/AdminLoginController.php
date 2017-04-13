@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use Session;
 
 class AdminLoginController extends Controller
 
 {
 	public function __construct (){
-		$this ->middleware('guest:admin');
+		$this ->middleware('guest');
 	}
 
   public function showLoginForm() {
@@ -32,6 +33,7 @@ class AdminLoginController extends Controller
   		return redirect()->intended(route('candidate.index'));
   	//4-unsuccessful redirect back to the for mwith their data
   	}
+          Session::flash ('danger','The credentials you entered did not match our database records');
   	  		return redirect()->back()->withInput($request->only('email','remember'));
 
   	

@@ -1,5 +1,7 @@
 @extends ("Main")
-<head><title>Fresco EAF | Education </title></head>
+<head>
+<title>Fresco EAF | Education </title>
+</head>
 
 @section ('content')
 
@@ -13,7 +15,7 @@
     
     {{form::label ('school', '* 1.  School name/ Nama Sekolah:')}}
     {{form::text ('school', null, array('class' => 'form-control', 'required' => '')) }}
-
+    
   	{{form::label ('start_date', '*2. Start Date/Tempoh Mula::')}}
   	{{form::date ('start_date', null, array('class' => 'form-control', 'required' => ''))}}
 

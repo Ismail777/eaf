@@ -1,10 +1,18 @@
 @extends ('Main')
-<head><title>Employment Application</title></head>
+<head>
+<title>Employment Application</title>
+<style type="text/css">
+  h1 {
+    font-family:'Press Start 2P', cursive;
+    margin-bottom: 40px;
+  }
+</style>
+</head>
 
 @section ('content')
 
-	<h1 style="margin-top: 100px;">Employment Application Form</h1>
-	<h2 style="margin-bottom: 60px;">1. Personal details:</h2>
+	<h1>Employment Application Form</h1>
+	<h2 style="margin-bottom: 40px;">1. Personal details:</h2>
 	
 {!! Form::open(['action' => 'personalInfoController@store' , 'data-parseley-validate'=> '']) !!} 
     
