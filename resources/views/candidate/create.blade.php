@@ -1,12 +1,6 @@
 @extends ('Main')
 <head>
 <title>Employment Application</title>
-<style type="text/css">
-  h1 {
-    font-family:'Press Start 2P', cursive;
-    margin-bottom: 40px;
-  }
-</style>
 </head>
 
 @section ('content')
@@ -15,84 +9,141 @@
 	<h2 style="margin-bottom: 40px;">1. Personal details:</h2>
 	
 {!! Form::open(['action' => 'personalInfoController@store' , 'data-parseley-validate'=> '']) !!} 
+
+<div class="form-horizontal">
     
-    {{form::label ('name', '*1. Name (As appears in your NRIC):')}}
+     <div class="form-group">
+     <label class="col-md-3 control-label">*1. Name (As appears in your NRIC):</label>
+     <div class="col-md-9">
     {{form::text ('name', null, array('class' => 'form-control', 'required' => '', 'maxlength'=>'255' )) }}
+    </div>
+    </div>
 
-  	{{form::label ('nric', '*2. NRIC No:')}}
+    <div class="form-group">
+    <label class="col-md-3 control-label">*2. NRIC No:</label>
+      <div class="col-md-9">
   	{{form::text ('nric', null, array('class' => 'form-control', 'required' =>'', 'maxlength'=>'255','minlength'=>'5'))}}
+      </div>
+    </div>
 
 
-  	{{form::label ('address', '*3. Address:')}}
+     <div class="form-group">
+  	{{form::label ('address', '*3. Address:' ,['class'=>'col-md-3 control-label'] )}}
+     <div class="col-md-9">
   	{{form::text ('address', null, array('class' => 'form-control', 'required' =>'', 'maxlength'=>'255','minlength'=>'5')) }}
+    </div></div>
 
-  	{{form::label ('mobile_no', '*4. Mobile Number:')}}
+    <div class="form-group">
+  	{{form::label ('mobile_no', '*4. Mobile Number:',['class'=>'col-md-3 control-label'])}}
+     <div class="col-md-9">
   	{{form::text ('mobile_no', null, array('class' => 'form-control', 'required' =>'', 'maxlength'=>'255','minlength'=>'5')) }}
+    </div></div>
 
-  	{{form::label ('email', '*5. E-mail Address:')}}
+
+    <div class="form-group">
+  	{{form::label ('email', '*5. E-mail Address:',['class'=>'col-md-3 control-label'])}}
+     <div class="col-md-9">
   	{{form::text ('email', null, array('class' => 'form-control', 'required' =>'', 'maxlength'=>'255','minlength'=>'5')) }}
+    </div></div>
 	
 
-  	{{form::label ('birthday', '*6. Birthday:')}}
+    <div class="form-group">
+  	{{form::label ('birthday', '*6. Birthday:',['class'=>'col-md-3 control-label'])}}
+     <div class="col-md-9">
   	{{form::date ('birthday', null, array('class' => 'form-control', 'required' =>'', 'maxlength'=>'255','minlength'=>'5')) }}
+    </div></div>
 
-  	{{form::label ('epf', '7. EPF Number:')}}
+
+    <div class="form-group">
+  	{{form::label ('epf', '7. EPF Number:',['class'=>'col-md-3 control-label'])}}
+     <div class="col-md-9">
   	{{form::text ('epf', null, array('class' => 'form-control','maxlength'=>'255')) }}
+    </div></div>
 
-
-  	{{form::label (' gender', '*8. Gender:')}}
+    <div class="form-group">
+  	{{form::label (' gender', '*8. Gender:',['class'=>'col-md-3 control-label'])}}
+     <div class="col-md-9">
   	<select class="form-control" name="gender" >
   		<option value="male">Male </option>
   		<option value="female">Female </option>
   	</select>
+    </div>
+    </div>
 	
-	{{form::label (' martial_status', '*9. Martial status:')}}
+
+  <div class="form-group">
+	{{form::label (' martial_status', '*9. Martial status:',['class'=>'col-md-3 control-label'])}}
+   <div class="col-md-9">
   	<select class="form-control" name="martial_status" >
   		<option value="single">Single </option>
   		<option value="married">Married </option>
   		<option value="divorsed">divorsed </option>
   	</select>
-
-	
-  	{{form::label ('spouse_occupation', '10. If married, what is he spouse occupation and where?')}}
-  	{{form::text ('spouse_occupation', null, array('class' => 'form-control', 'maxlength'=>'255')) }}
+    </div>
+    </div>
 
 
-  	{{form::label (' kids_no', '11. Number of kids and their age, if any:')}}
-  	{{form::text ('kids_no', null, array('class' => 'form-control', 'maxlength'=>'255')) }}
+	 <div class="form-group">
+  	{{form::label ('spouse_occupation', '10. If married, what is he spouse occupation and where?',['class'=>'col-md-3 control-label'])}}
+       <div class="col-md-9">
+    	{{form::text ('spouse_occupation', null, array('class' => 'form-control', 'maxlength'=>'255')) }}
+      </div>
+    </div>
 
-	{{form::label (' birth_country', '*12. Country of birth:')}}
+
+    <div class="form-group">
+         <label class="col-md-3 control-label">11. Number of kids and their age, if any:     </label>
+       <div class="col-md-9">
+    	{{form::text ('kids_no', null, array('class' => 'form-control', 'maxlength'=>'255')) }}
+      </div>
+    </div>
+  
+  <div class="form-group">
+	{{form::label (' birth_country', '*12. Country of birth:',['class'=>'col-md-3 control-label'])}}
+   <div class="col-md-9">
   	<select class="form-control" name="birth_country" >
   		<option value="malaysia">Malaysia </option>
   		<option value="indonesia">Indonesia </option>
   		<option value="nepal">Nepal </option>
   		<option value="other">Other </option>
   	</select>
+    </div></div>
 
-	{{form::label ('citizenship', '*13. Citizenship:')}}
+  <div class="form-group">
+	{{form::label ('citizenship', '*13. Citizenship:',['class'=>'col-md-3 control-label'])}}
+   <div class="col-md-9">
 	<select class="form-control" name="citizenship" >
   		<option value="malaysia">Malaysia </option>
   		<option value="indonesia">Indonesia </option>
   		<option value="nepal">Nepal </option>
   		<option value="other">Other </option>
   	</select>
+    </div></div>
 
-  	{{form::label ('religion', '*14. Religion:')}}
+
+    <div class="form-group">
+  	{{form::label ('religion', '*14. Religion:',['class'=>'col-md-3 control-label'])}}
+     <div class="col-md-9">
 	<select class="form-control" name="religion" >
   		<option value="islam">Islam </option>
   		<option value="indonesia">Indonesia </option>
   		<option value="nepal">Nepal </option>
   		<option value="other">Other </option>
   	</select>
+  </div></div>
 
-  	{{form::label ('race', '*15. Race:')}}
+    <div class="form-group">
+  	{{form::label ('race', '*15. Race:',['class'=>'col-md-3 control-label'])}}
+     <div class="col-md-9">
 	<select class="form-control" name="race" >
   		<option value="malay">Malay </option>
   		<option value="chinese">Chinese </option>
   		<option value="indian">Indain </option>
   		<option value="other">Other </option>
   	</select>
+    </div></div>
 
+</div>
   	 {{form::submit ('Next Page', array ('class' => 'btn btn-success btn-lg btn-block	' ))}}
 
 
