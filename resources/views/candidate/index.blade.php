@@ -6,18 +6,26 @@
 
 @section ('content')
 
-	<div class="row">
+
+	
+<div class="row">
+
+	
+
 		<div class="col-md-4">
 		 <h1>All Candidates</h1> 
 			{!! Form::open(['method'=>'GET', 'route'=>'candidate.search']) !!}
 			<input type="text" name="search" class="form-control" placeholder="Search..">
 			<span class="input-group-btn">
-			<button type="submit" class="btn btn-default btn-lg">
+			<button type="submit" class="btn btn-default btn-lg btn-success">
 			<i class="glyphicon glyphicon-search" ></i>
 			</button>
 			</span>
 			{!! Form::close() !!}
 		</div>
+
+
+
 	</div>
 	<div class="table-responsive">
 			<table class="table table-striped table-bordred" id="mytable">
@@ -47,8 +55,11 @@
 		 	 	</tr>
 		 	 	@endforeach
 		 	 </tbody>
-			</table>
+			</table>	
 	</div>
+
+
+
 	<!-- Dialog -->
 	 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
@@ -70,6 +81,8 @@
     <!-- /.modal-content --> 
   </div>
   </div>
-	
+	<div class ="text-center">
+			{!! $candidates->links() !!}
+		</div>
 
 @endsection

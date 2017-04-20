@@ -23,7 +23,7 @@ class CandidateController extends Controller
     public function index()
     {
         
-        $candidates = Candidate::all();
+        $candidates = Candidate::orderBy('id','desc')->paginate(10);
         return view ('candidate.index')->withCandidates($candidates);
 
 
@@ -43,8 +43,7 @@ class CandidateController extends Controller
     $educations = Education::where('candidate_id',$candidate->id)->get()->toArray();
     $employments = Employment::where('candidate_id',$candidate->id)->get()->toArray();
 
-   // $data =compact('candidate','educations','employments') ;
-   // dd($data);
+   
       
    $pdf = PDF::loadview('candidate.show_pdf',['candidate'=>$candidate,'educations'=>$educations,'employments'=>$employments]);
        return $pdf->stream ('candidate.pdf');

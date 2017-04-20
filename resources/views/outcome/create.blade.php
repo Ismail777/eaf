@@ -12,7 +12,6 @@
   	{{form::label ('outcome', 'Candidate\'s Outcome/Decision:')}}<br>
   	{{Form::radio('outcome', 'Approved ')}}Approved  <br>
   	{{Form::radio('outcome', 'Reject ')}}Reject  <br>
-  	{{Form::radio('outcome', 'KIV ')}}KIV  <br>
 
 	{{Form::textarea('remarks', null,['class'=>'form-control'])}}
 	{{Form::submit ('Submit')}}

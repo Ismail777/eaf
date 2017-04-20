@@ -34,6 +34,7 @@ Route::get ('candidate/{id}/complete',['uses'=>'DeclarationController@getFormCom
 Route::get('candidate/{id}/invite', ['uses'=>'EmailsController@getInvitation', 'as'=>'invite.create']);
 Route::post('candidate/{id}/invite', 'EmailsController@postInvite')->name('invite.post');
 Route::post('candidate/{id}/E_profile', 'EmailsController@postProfile')->name('E_profile.post');
+Route::get('candidate/{id}/rejectEmail', 'EmailsController@sendRejectionLetter')->name('rejectEmail');
 Route::get ('test',function (){
 	dd (Config::get('mail'));
 });

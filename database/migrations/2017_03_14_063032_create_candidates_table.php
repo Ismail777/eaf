@@ -25,6 +25,7 @@ class CreateCandidatesTable extends Migration
             $table->string ('epf')->nullable();
             $table->string ('gender');
             $table->string ('martial_status');
+            $table->string ('spouse_occupation_status');
             $table->string ('spouse_occupation')->nullable();
             $table->integer ('kids_no')->nullable()->unsigned();
             $table->string ('birth_country');

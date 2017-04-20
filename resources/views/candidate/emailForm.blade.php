@@ -14,8 +14,11 @@
                 {{Form::label ('email', 'Email:')}}
                 {{Form::text ('email', null, ['class'=>'form-control', 'disabled'=>''])}}
 
-                {{Form::label ('time', 'Time & Date:')}}
+                {{Form::label ('time', 'Time:')}}
                 {{Form::text ('time', null, ['class'=>'form-control']) }}
+
+                {{Form::label ('date', 'Date:')}}
+                {{Form::text ('date', null, ['class'=>'form-control']) }}
 
                 {{Form::label ('place', 'place:')}}
                 {{Form::text ('place', null, ['class'=>'form-control']) }}

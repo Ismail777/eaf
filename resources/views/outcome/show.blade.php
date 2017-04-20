@@ -11,6 +11,9 @@
 			<p>{{$candidate->outcome->remarks}}</p>
 		@if ($candidate->outcome->outcome === "Approved")
     		<a href="{{route('employee.create',$candidate->id)}}" class="btn btn-lg btn-primary">Create An Employee Contract</a>
+
+    	@elseif ($candidate->outcome->outcome === "Reject")
+    	<a href="{{route('rejectEmail',$candidate->id)}}" class="btn btn-lg btn-warning">Send A Rejection Email</a>
     	@endif
 		</div>
 	</div>

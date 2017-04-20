@@ -4,19 +4,26 @@
 @section ('content')
 
 
-	<h1 style="margin-top: 100px;">Employment Application Form</h1>
-	<h2 style="margin-bottom: 60px;">4. Declarations:</h2>
+	<h1>Fresco Employment Application Form</h1>
+
+
+  <div class="container-bar">
+    <ul class="progressbar">
+      <li >Personal Details</li>
+      <li>Position</li>
+      <li>Education</li>
+      <li>Emloyment History</li>
+      <li class="active">Declarations</li>
+    </ul>
+  </div>
+
+
+	<h3>4. Declarations:</h3>
 	
 {!! Form::open(['action' => 'DeclarationController@store' , 'data-parseley-validate'=> '']) !!} 
 
 <div class="form-horizontal">
 
-<div class="form-group">
-                                    <label class="col-md-4 control-label">Auto Close Datepicker</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="datepicker-autoClose" placeholder="Auto Close Datepicker" />
-                                    </div>
-                                </div>
 
     <div class="form-group">
     {{form::label ('employed_by_fresco', '* 1. Have you previously applied or was employed by the Fresco or Jaya Grocer?',['class'=>'col-md-3 control-label'])}}
@@ -132,7 +139,8 @@
 
 </div>
 
-  	{{form::submit ('Next Page', array ('class' => 'btn btn-success btn-lg btn-block	' ))}}
+      <a href="{{route('employment.create')}}" class="btn btn-lg btn-success"><b>Previous Page</b></a>
+  	{{form::submit ('Next Page', array ('class' => 'btn btn-success btn-lg	' ))}}
 
 
   	<h3 style="color: red;">* Fields are mandatory </h3>

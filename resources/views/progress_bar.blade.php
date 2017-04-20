@@ -1,29 +1,9 @@
-h1 {
-	font-family:'Bitter', serif;
-	margin-bottom: 25px;
-}
-table {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-th {
-	font-family: 'Bree Serif', serif;
-	
-
-}
-	table td, table th{
-
-	}
-
-h2,h3 {
-	font-family: 'Bree Serif', serif;
-	margin-bottom: 15px;
-	margin-top: 25px;
-}
-
-
-.container-bar {
+<!DOCTYPE html>
+<html>
+@section ('progress_bar')
+<head>
+	<style type="text/css">
+		.container {
 			width: 100%;
 		}
 		.progressbar {
@@ -32,13 +12,12 @@ h2,h3 {
 		.progressbar li {
 			list-style-type: none;
 			float: left;
-			width: 20% ;
+			width: ;
 			position: relative;
 			text-align: center;
 		}
 		.progressbar li:before {
-			content: counter(step);
-			counter-increment: step;
+			content: '1';
 			width: 30px;
 			height: 30px;
 			line-height: 30px;
@@ -46,21 +25,21 @@ h2,h3 {
 			display: block;
 			text-align: center;
 			margin: 0 auto 10px auto;
-			border-radius: 50%;
+			border-radius: 50%
 			background-color: white;
 
 		}
-		.progressbar li:after {
+		progressbar li:after {
 			content: '';
 			position: absolute;
 			width: 100%;
-			height: 2px;
+			height: 1px;
 			background-color: #ddd;
 			top: 15px;
 			left: -50%;
 			z-index: -1;
 		}
-		.progressbar li:first-child:after {
+		.progressnar li:first-child:after {
 			content: none;
 		}
 		.progressbar li.active {
@@ -72,4 +51,17 @@ h2,h3 {
 		}
 		.progressbar li.active + li:after {
 			background-color: green;
-			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="progressbar">
+			<li class="active">Step 1</li>
+			<li>Step 2</li>
+			<li>Step 3</li>
+		</ul>
+	</div>
+</body>
+
+</html>

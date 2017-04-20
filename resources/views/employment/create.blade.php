@@ -1,11 +1,23 @@
 @extends ('Main')
 
-<head><title>Employment Application</title></head>
+<head><title>Fresco Employment Application</title></head>
 
 @section ('content')
 
-		<h1 style="margin-top: 100px;">Employment Application Form</h1>
-	<h2 style="margin-bottom: 60px;">4. Employment details:</h2>
+		<h1>Fresco Employment Application Form</h1>
+
+
+  <div class="container-bar">
+    <ul class="progressbar">
+      <li>Personal Details</li>
+      <li>Position</li>
+      <li class="active">Education</li>
+      <li>Emloyment History</li>
+      <li >Declarations</li>
+    </ul>
+  </div>
+
+	<h2>4. Employment details:</h2>
 	
 {!! Form::open(['action' => 'EmploymentController@store' , 'data-parseley-validate'=> '']) !!} 
     
@@ -37,7 +49,7 @@
     {{form::date ('start_date', null, array('class' => 'form-control', 'required' => '', 'date')) }}
     </div></div>
 
-    <div class="form-group">
+<div class="form-group">
 	{{form::label ('end_date', '*4. End Date/Tempoh Tamat:',['class'=>'col-md-3 control-label'])}}
     <div class="col-md-9">
     {{form::date ('end_date', null, array('class' => 'form-control', 'required' => '' , 'date')) }}
@@ -51,11 +63,12 @@
     </div></div>
 
 </div>
-        <a href="{{route('employment.create2')}}" class="btn btn-default btn-block">Add a second employment record</a>
+        <a href="{{route('employment.create2')}}" class="btn btn-default btn-block btn-lg">Add a second employment record</a>
+        <br>
+          <a href="{{route('education.create')}}" class="btn btn-lg btn-success"><b>Previous Page</b></a>
+      	 {{form::submit ('Next Page', array ('class' => 'btn btn-success btn-lg' ))}}
 
-      	 {{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-block	' ))}}
-
-      	<h3 style="color: red;">* Fields are mandatory </h3>
+      	<h3 style="color: red;">* Fields are mandatory <br> *Please go through all the steps in the correct order </h3>
 
 {!! Form::close () !!}
 

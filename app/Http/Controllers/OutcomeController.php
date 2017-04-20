@@ -30,6 +30,8 @@ class OutcomeController extends Controller
    	$outcome->outcome = $request->outcome;
    	$outcome->remarks = $request->remarks;
    	$outcome->candidate_id = $candidateId;
+
+    //$outcome->admin = Auth::user()->name;
    	$outcome->save();
 
    	  Session::flash ('success', 'The outcome decision has been successfuly saved.');
@@ -42,6 +44,7 @@ class OutcomeController extends Controller
    	return view ('outcome.show')->with ('candidate',$candidate);
 
    }
+
 
   
 

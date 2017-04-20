@@ -14,7 +14,7 @@ class EmployeeController extends Controller
     }
     public function index()
     {
-         $employees = Employee::all();
+         $employees = Employee::orderBy('id','desc')->paginate(10);
         return view ('employee.index')->with('employees',$employees);
     }
 
@@ -36,6 +36,7 @@ class EmployeeController extends Controller
     public function store(Request $request,$id)
     {
          $this ->validate ($request, array(
+                        'staff_number'=>'required'
                         'name' => 'required | max:255' ,
                         'position_new'=>'required',
                         'salary'=>'required',
@@ -43,6 +44,7 @@ class EmployeeController extends Controller
 
         $employee = new Employee;
         $employee->candidate_id=$id;
+        $employee->staff_number = $request->staff_number;
         $employee->name=$request->name;
         $employee->salary=$request->salary;
         $employee->outlet=$request->outlet;

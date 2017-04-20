@@ -3,10 +3,23 @@
 <title>Employment Application</title>
 </head>
 
+
 @section ('content')
 
-	<h1>Employment Application Form</h1>
-	<h2 style="margin-bottom: 40px;">1. Personal details:</h2>
+	<h1>Fresco Employment Application Form</h1><br>
+
+  <div class="container-bar">
+    <ul class="progressbar">
+      <li class="active">Personal Details</li>
+      <li>Position</li>
+      <li>Education</li>
+      <li>Emloyment History</li>
+      <li>Declarations</li>
+    </ul>
+  </div>
+
+
+	<h3>1. Personal details:</h3>
 	
 {!! Form::open(['action' => 'personalInfoController@store' , 'data-parseley-validate'=> '']) !!} 
 
@@ -84,22 +97,33 @@
 
 
 	 <div class="form-group">
-  	{{form::label ('spouse_occupation', '10. If married, what is he spouse occupation and where?',['class'=>'col-md-3 control-label'])}}
+  	{{form::label ('spouse_occupation_status', '*10. If married, is your spouse currently working?',['class'=>'col-md-3 control-label'])}}
        <div class="col-md-9">
-    	{{form::text ('spouse_occupation', null, array('class' => 'form-control', 'maxlength'=>'255')) }}
+    	<select class="form-control" name="spouse_occupation_status" >
+      <option value="yes">Yes </option>
+      <option value="no">No </option>
+    </select>
+      </div>
+    </div>
+
+
+   <div class="form-group">
+    {{form::label ('spouse_occupation', '11. If yes, what is the spouse occupation and where?',['class'=>'col-md-3 control-label'])}}
+       <div class="col-md-9">
+      {{form::text ('spouse_occupation', null, array('class' => 'form-control', 'maxlength'=>'255')) }}
       </div>
     </div>
 
 
     <div class="form-group">
-         <label class="col-md-3 control-label">11. Number of kids and their age, if any:     </label>
+         <label class="col-md-3 control-label">12. Number of kids and their age, if any:     </label>
        <div class="col-md-9">
     	{{form::text ('kids_no', null, array('class' => 'form-control', 'maxlength'=>'255')) }}
       </div>
     </div>
   
   <div class="form-group">
-	{{form::label (' birth_country', '*12. Country of birth:',['class'=>'col-md-3 control-label'])}}
+	{{form::label (' birth_country', '*13. Country of birth:',['class'=>'col-md-3 control-label'])}}
    <div class="col-md-9">
   	<select class="form-control" name="birth_country" >
   		<option value="malaysia">Malaysia </option>
@@ -110,7 +134,7 @@
     </div></div>
 
   <div class="form-group">
-	{{form::label ('citizenship', '*13. Citizenship:',['class'=>'col-md-3 control-label'])}}
+	{{form::label ('citizenship', '*14. Citizenship:',['class'=>'col-md-3 control-label'])}}
    <div class="col-md-9">
 	<select class="form-control" name="citizenship" >
   		<option value="malaysia">Malaysia </option>
@@ -122,7 +146,7 @@
 
 
     <div class="form-group">
-  	{{form::label ('religion', '*14. Religion:',['class'=>'col-md-3 control-label'])}}
+  	{{form::label ('religion', '*15. Religion:',['class'=>'col-md-3 control-label'])}}
      <div class="col-md-9">
 	<select class="form-control" name="religion" >
   		<option value="islam">Islam </option>
@@ -133,7 +157,7 @@
   </div></div>
 
     <div class="form-group">
-  	{{form::label ('race', '*15. Race:',['class'=>'col-md-3 control-label'])}}
+  	{{form::label ('race', '*16. Race:',['class'=>'col-md-3 control-label'])}}
      <div class="col-md-9">
 	<select class="form-control" name="race" >
   		<option value="malay">Malay </option>

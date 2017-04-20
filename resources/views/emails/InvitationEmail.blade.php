@@ -5,7 +5,7 @@ Dear {{$name}},
 
 <br><br><br>
 
-As a result of your application for the position at El-Fresco, I would like to invite you to attend an interview on {{$time}} at {{$place}}.
+As a result of your application for the position at El-Fresco, I would like to invite you to attend an interview at {{$time}} on the {{$date}} at {{$place}}.
 
 You will have an interview with {{$interviewer}}. The interview will last about 45 minutes. 
 

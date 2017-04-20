@@ -6,8 +6,21 @@
 @section ('content')
 
 
-	<h1 style="margin-top: 100px;">Employment Application Form</h1>
-	<h2 style="margin-bottom: 60px;">1. Education details: your most recent educations</h2>
+	<h1>Fresco Employment Application Form</h1>
+
+
+  <div class="container-bar">
+    <ul class="progressbar">
+      <li>Personal Details</li>
+      <li>Position</li>
+      <li class="active">Education</li>
+      <li>Emloyment History</li>
+      <li >Declarations</li>
+    </ul>
+  </div>
+
+
+	<h2>1. Education details: your most recent educations</h2>
 
 	
 	
@@ -54,8 +67,8 @@
     
   	<a href="{{route('education.create2')}}" class="btn btn-default btn-block">Add Another Edcuation Record</a>
   
-
-  	{{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-block ' ))}}
+      <a href="{{route('position.create')}}" class="btn btn-lg btn-success"><b>Previous Page</b></a>
+  	{{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-lg ' ))}}
 
 	{{Form::close()}}
 

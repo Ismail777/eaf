@@ -8,6 +8,9 @@
 	{!! Form::model ($candidate, ['route' => ['employee.store',$candidate->id], 'method'=>"POST" ]) !!}	
 
 	<div class="col-md-8">
+	{{Form::label ('staff_number', 'Staff Number:')}}
+	{{Form::text('staff_number', null, array ("class" => 'form-control input-lg')) }}
+<br>
 	{{Form::label ('name', 'Name:')}}
 	{{Form::text('name', null, array ("class" => 'form-control input-lg')) }}
 <br>

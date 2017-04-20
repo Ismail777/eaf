@@ -47,6 +47,9 @@
 			</table>
 		</div>	
 	</div>
-
+	
+	<div class ="text-center">
+			{!! $employees->links() !!}
+		</div>
 
 @endsection

@@ -26,6 +26,7 @@ class personalInfoController extends Controller
                                         ,'epf'=>'max:255'
                                         ,'gender'=>'required'
                                         ,'martial_status'=>'required | max:255'
+                                        ,'spouse_occupation_status'=>'max:3'
                                         ,'spouse_occupation'=>'max:255'
                                         ,'kids_no'=>''
                                         ,'birth_country'=>'required'
@@ -44,6 +45,7 @@ class personalInfoController extends Controller
          $candidate-> epf = $request->epf;
          $candidate-> gender = $request->gender;
          $candidate-> martial_status = $request->martial_status;
+         $candidate-> spouse_occupation_status = $request->spouse_occupation_status;
          $candidate-> spouse_occupation = $request->spouse_occupation;
          $candidate-> kids_no = $request->kids_no;
          $candidate-> birth_country = $request->birth_country;
@@ -54,7 +56,7 @@ class personalInfoController extends Controller
          $candidate-> save();
             $request->session()->put('candidate_id', $candidate->id);
      Session::flash ('success', 'The candidate description has been successfuly saved!');
-    return redirect()->route ('position.create');
+    return redirect()->route ('position.create',$candidate_id);
 
    
          

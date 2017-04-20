@@ -20,8 +20,7 @@ class PositionController extends Controller
    
     public function store(Request $request)
     {
-        $this ->validate ($request, array('int_time'=>'required'
-                                            ,'int_date'=>'date|required'
+        $this ->validate ($request, array(
                                             ,'position'=>'required'
                                             ,'pre_date'=>'required|date'
                                             ,'pre_outlet'=>'required|max:255'
@@ -29,9 +28,7 @@ class PositionController extends Controller
                                             ,'source'=>'required|max:255'
                                             ,'recommend_name'=>'max:255'));
         $position = new Position;
-        
-        $position-> int_time = $request->int_time;
-        $position-> int_date = $request->int_date;
+      
         $position-> position = $request->position;
         $position-> pre_date = $request->pre_date;
         $position-> pre_outlet = $request->pre_outlet;

@@ -4,32 +4,31 @@
 
 @section ('content')
 
-<script src="jquery.datetimepicker.full.js"></script>   
 
-	<h1 style="margin-top: 100px;">Employment Application Form</h1>
-	<h2 style="margin-bottom: 60px;">1. Position details:</h2>
+	<h1>Fresco Employment Application Form</h1>
+
+
+  <div class="container-bar">
+    <ul class="progressbar">
+      <li >Personal Details</li>
+      <li class="active">Position</li>
+      <li>Education</li>
+      <li>Emloyment History</li>
+      <li >Declarations</li>
+    </ul>
+  </div>
+
+
+	<h3>1. Position details:</h3>
 	
 {!! Form::open(['action' => 'PositionController@store' , 'data-parseley-validate'=> '']) !!} 
     
 
 <div class="form-horizontal">
 
-    <div class="form-group">
-    {{form::label ('int_time', '* 1. Interview Time:',['class'=>'col-md-3 control-label'])}}
-    <div class="col-md-9">
-    {{form::time ('int_time', null, array('class' => 'form-control', 'required' => '')) }}
-    </div></div>
-
 
     <div class="form-group">
-  	{{form::label (' date', '*2. Interview Date:',['class'=>'col-md-3 control-label'])}}
-    <div class="col-md-9">
-     
-  	{{form::date ('int_date', null, array('class' => 'form-control','placeholder'=>'MM/DD/YYYY'))}}
-    </div></div>
-
-    <div class="form-group">
-  	{{form::label ('position', '*3. Position Applied For:',['class'=>'col-md-3 control-label'])}}
+  	{{form::label ('position', '*1. Position Applied For:',['class'=>'col-md-3 control-label'])}}
 	   <div class="col-md-9">
      <input type="text" list="position" name="position" />
     <datalist id="position">
@@ -45,25 +44,25 @@
     </div></div>
  
     <div class="form-group">
-  	{{form::label ('pre_date', '*4. Earliest Available Date/Preffrered Start Date:',['class'=>'col-md-3 control-label'])}}
+  	{{form::label ('pre_date', '*2. Earliest Available Date/Preffrered Start Date:',['class'=>'col-md-3 control-label'])}}
     <div class="col-md-9">
   	{{form::date ('pre_date', null, array('class' => 'form-control', 'required' =>'','placeholder'=>'MM/DD/YYYY')) }}
     </div></div>
 
     <div class="form-group">
-  	{{form::label ('pre_outlet', '5. Preffered Outlet:',['class'=>'col-md-3 control-label'])}}
+  	{{form::label ('pre_outlet', '3. Preffered Outlet:',['class'=>'col-md-3 control-label'])}}
     <div class="col-md-9">
   	{{form::text ('pre_outlet', null, array('class' => 'form-control')) }}
     </div></div>
 
     <div class="form-group">
-  	{{form::label ('salary', '*6. Expected Salary(RM):',['class'=>'col-md-3 control-label'])}}
+  	{{form::label ('salary', '*4. Expected Salary(RM):',['class'=>'col-md-3 control-label'])}}
     <div class="col-md-9">
   	{{form::text ('salary', null, array('class' => 'form-control', 'required' =>'')) }}
     </div></div>
 
     <div class="form-group">
-  	{{form::label ('source', '*7.  How did you hear about us? :',['class'=>'col-md-3 control-label'])}}<br>
+  	{{form::label ('source', '*5.  How did you hear about us? :',['class'=>'col-md-3 control-label'])}}<br>
     <div class="col-md-9">
   	{{Form::radio('source', 'JobStreet Advertisment')}}JobStreet Advertisment <br>
   	{{Form::radio('source', 'Outlet Posters')}}Outlet Posters <br>
@@ -73,14 +72,18 @@
     </div></div>
 
     <div class="form-group">
-  	{{form::label ('recommend_name', '8.  If recommended by friend, what is the name of your friend and which outlet is he/she working at? :',['class'=>'col-md-3 control-label'])}}
+  	{{form::label ('recommend_name', '6.  If recommended by friend, what is the name of your friend and which outlet is he/she working at? :',['class'=>'col-md-3 control-label'])}}
     <div class="col-md-9">
   	{{form::text('recomment_name', null, ['class'=>'form-control'])}}
     </div></div>
 
 </div>
 
-    {{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-block ' ))}}
+    
+         <a href="{{route('personal.create')}}" class="btn btn-lg btn-success"><b>Previous Page</b></a>
+    {{form::submit ('Next Page', array ('class' => 'btn btn-success btn-lg btn-lg ' ))}}
+     
+   
 
   	<h3 style="color: red;"> *Fields are mandatory </h3>
 
