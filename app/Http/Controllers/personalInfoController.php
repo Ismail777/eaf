@@ -56,7 +56,7 @@ class personalInfoController extends Controller
          $candidate-> save();
             $request->session()->put('candidate_id', $candidate->id);
      Session::flash ('success', 'The candidate description has been successfuly saved!');
-    return redirect()->route ('position.create',$candidate_id);
+    return redirect()->route ('position.create');
 
    
          

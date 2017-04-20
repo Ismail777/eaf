@@ -21,7 +21,7 @@ class PositionController extends Controller
     public function store(Request $request)
     {
         $this ->validate ($request, array(
-                                            ,'position'=>'required'
+                                            'position'=>'required'
                                             ,'pre_date'=>'required|date'
                                             ,'pre_outlet'=>'required|max:255'
                                             ,'salary'=>'required|max:255'

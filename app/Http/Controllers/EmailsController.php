@@ -54,7 +54,7 @@ class EmailsController extends Controller
           $candidate= Candidate::Find ($id);
           Mail::to($candidate->email)->send(new EafProfile($candidate));
 
-      Session::flash ('success','The email has been sent to your inbox');
+      Session::flash ('success','Your EAF profile has been sent to your inbox');
       return redirect ('/');
 
      }

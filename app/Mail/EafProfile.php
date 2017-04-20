@@ -7,6 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Candidate;
+use App\Position;
 
 
 class EafProfile extends Mailable
@@ -15,7 +16,7 @@ class EafProfile extends Mailable
 
     public $candidate;
 
-    public function __construct(Candidate $candidate)
+    public function __construct(Candidate $candidate, Position $position)
     {
          $this->candidate = $candidate;
     }

@@ -1,6 +1,6 @@
 @component('mail::message')
 
-Dear Mr.Ms {{$candidate->name}} thank you for completing the EAF. Here is your canddiate profile.
+Dear Mr.Ms {{$candidate->name}} thank you for completing the EAF. Here is your canddiate profile. Our staff are currently reviewing your application and they will get back to you soon. <br><br>
 
 ### Personal Information:
 1-Name: {{$candidate->name}} 
@@ -19,19 +19,11 @@ Dear Mr.Ms {{$candidate->name}} thank you for completing the EAF. Here is your c
 14-Religion: {{$candidate->religion}}  
 15-Race: {{$candidate->race}}  
 
-@foreach ($candidate->education as $candidate->education)
-### Education Information:
-| School | Cerftificate | CGPA | Time Period |
-| ------ | ------------ | ---- | ----------- |
-| {{$candidate->education->school}}| {{$candidate->edcation->cert}} | {{$candidate->education->cgpa}} | {{$candidate->education->start_date}}->{{$candidate->education->end_date}} |
-@endforeach
-
-
 
 @component('mail::button', ['url' => ''])
-Button Text
+Visit us!
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+ElFresco Marketing.
 @endcomponent
