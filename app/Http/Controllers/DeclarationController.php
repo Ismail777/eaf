@@ -49,7 +49,7 @@ class DeclarationController extends Controller
 
  	$declaration -> save();
 
-    return redirect()->route ('candidate.index');
+    return redirect()->route ('form_complete', $declaration->candidate_id);
 
 
    }

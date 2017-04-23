@@ -23,20 +23,16 @@
            <ul class="nav navbar-nav navbar-right">
 
             @if (Auth::check()) 
+            <p class="navbar-text"> Hello, {{Auth::user()->name}}</p>
 
-              <li class="dropdown">
-                <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{Auth::user()->name}} <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-
-                    <li><a href="{{route ('candidate.index') }}">Candidates</a></li>
-                     <li><a href="{{route ('employee.index') }}">Employees</a></li>
+                    <li><a href="{{route ('candidate.index') }}"><b><u>Candidates</u></b></a></li>
+                     <li><a href="{{route ('employee.index') }}"><b><u>Employees</u></b></a></li>
                     <li role="separator" class="divider"></li>
-                    <li>  {{ Form::open(array('route' => 'logout'), ['method'=>'POST', 'style'=>'display:none;']) }} {{ Form::submit('Logout') }} </form> {{ Form::close () }}</li>
 
-                </ul>
-               </li>
+                    <li style="margin-top: 10px;">{{ Form::open(array('route' => 'logout'), ['method'=>'POST', 'style'=>'display:none;']) }} {{ Form::submit('Logout',['class'=>'btn btn-warning']) }} </form> {{ Form::close () }}</li>
+
           @else  
-           <a href="{{route ('admin') }}" class="btn btn-default" >Admins Login </a> 
+           <a style="margin-top: 7px;" href="{{route ('admin') }}" class="btn btn-default" >Admins Login </a> 
           @endif
           </ul>
         </div>

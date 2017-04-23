@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
-use Mail;
 use App\Http\Requests;
 use App\Candidate;
 use App\Education;
@@ -51,10 +50,10 @@ class CandidateController extends Controller
         
     } 
 
-    public function interviewUpdate ($id){
+    public function interviewUpdate (Request $request,$id){
       $candidate = Candidate::find($id);
       
-          $candidate->interview = 1;
+          $candidate->interview = $request->interview;
           $candidate->save();
       Session::flash ('success', 'Interview status has been updated.');
       return back();
@@ -64,10 +63,8 @@ class CandidateController extends Controller
     public function show($id,Request $request)
     {
         $candidate= Candidate::find ($id);
-        $educations = Education::where('candidate_id',$candidate->id)->get();
-        $employments = Employment::where('candidate_id',$candidate->id)->get();
-
-        return view ('candidate.show') -> with ('candidate', $candidate)->with ('educations',$educations)->with ('employments',$employments);
+        
+        return view ('candidate.show') -> with ('candidate', $candidate);
 
     }
 

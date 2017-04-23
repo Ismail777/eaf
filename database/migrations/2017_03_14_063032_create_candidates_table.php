@@ -32,7 +32,7 @@ class CreateCandidatesTable extends Migration
             $table->string ('citizenship');
             $table->string ('religion');
             $table->string ('race');
-            $table->boolean ('interview')->default(false);
+            $table->string ('interview')->nullable();
            
         });
     }

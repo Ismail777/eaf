@@ -7,6 +7,8 @@
 		<h1>Fresco Employment Application Form</h1>
 
 
+<div class="row">
+  <div class="col-md-7">
   <div class="container-bar">
     <ul class="progressbar">
       <li>Personal Details</li>
@@ -15,9 +17,12 @@
       <li>Emloyment History</li>
       <li >Declarations</li>
     </ul>
-  </div>
+  </div></div></div>
 
 	<h2>4. Employment details:</h2>
+
+   <a href="{{route('employment.create2')}}" class="btn btn-default btn-block btn-lg">Add a second employment record</a>
+        <br><br>
 	
 {!! Form::open(['action' => 'EmploymentController@store' , 'data-parseley-validate'=> '']) !!} 
     
@@ -63,8 +68,7 @@
     </div></div>
 
 </div>
-        <a href="{{route('employment.create2')}}" class="btn btn-default btn-block btn-lg">Add a second employment record</a>
-        <br>
+       
           <a href="{{route('education.create')}}" class="btn btn-lg btn-success"><b>Previous Page</b></a>
       	 {{form::submit ('Next Page', array ('class' => 'btn btn-success btn-lg' ))}}
 

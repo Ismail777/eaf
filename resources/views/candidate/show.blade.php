@@ -4,8 +4,7 @@
 <title>El-fresco| {{$candidate->name }}</title>
 
 @section ('content')
-	</div>
-</div>
+</div> </div>
 
 	
 	
@@ -15,9 +14,15 @@
 			<h1>Name: {{$candidate->name }} </h1>
 		<p class="lead"> Preffred Outlet choice: {{$candidate->position->pre_outlet}} </p> 
 		<p class="lead"> First Interview Status: 
-		@if ($candidate->interview===0) Hasn't been performed 
-		@else Already been performed 
-		@endif <a href="{{route('interview',$candidate->id)}}" class="btn btn-sm btn-default">Update Interview Status</a> </p> 
+		
+		@if ($candidate->interview == null) Hasn't been set yet 
+		@else {{$candidate->interview}} </p>
+		@endif
+		{!!Form::open (['route'=>['interview',$candidate->id],'method'=>'PUT'])!!}
+		{{ Form::text ('interview',null,['class'=>'form-control','placeholder'=>'time & date'])}}
+		{{ Form::submit ('Update Interview Status',['class'=>'btn btn-default'])}}
+		{!! Form::close() !!}
+	
 	</div>
 
 	<div class="col-md-2 ">
@@ -99,7 +104,7 @@
 					<th>Certificate obtained</th>
 					<th>CGPA or Equevilant</th>
 				</thead>
-				@foreach ($educations as $education)
+				@foreach ($candidate->educations as $education)
 				<tbody>
 					<td>{{ $education->school}}</td>
 					<td>{{ $education->start_date}}</td>
@@ -107,8 +112,9 @@
 					<td>{{ $education->cert}}</td>
 					<td>{{ $education->cgpa}}</td>
 				</tbody>
+				@endforeach
 			</table>
-			@endforeach
+			
 
 
 			<h3 >Employment Information</h3>
@@ -121,7 +127,7 @@
 					<th>End Date</th>
 					<th>Leave Reason(s)</th>
 				</thead>
-				@foreach ($employments as $employment)
+				@foreach ($candidate->employments as $employment)
 				<tbody>
 					<td>{{ $employment->company}}</td>
 					<td>{{ $employment->job_title}}</td>
@@ -130,8 +136,9 @@
 					<td>{{ $employment->end_date}}</td>
 					<td>{{ $employment->leave_reason}}</td>
 				</tbody>
+				@endforeach
 			</table>
-			@endforeach
-	</div>
 			
+	</div>
+</div>
 @endsection

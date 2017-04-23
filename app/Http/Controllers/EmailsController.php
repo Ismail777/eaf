@@ -51,6 +51,7 @@ class EmailsController extends Controller
     }
 
      public function postProfile($id) {
+      
           $candidate= Candidate::Find ($id);
           Mail::to($candidate->email)->send(new EafProfile($candidate));
 

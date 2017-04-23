@@ -77,7 +77,7 @@ class EducationController extends Controller
 
         Session::flash ('success', 'Second Education form has been saved.');
          
-        return redirect()->back();
+        return redirect()->route('education.create');
 
 
         

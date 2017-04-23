@@ -36,16 +36,17 @@ class EmployeeController extends Controller
     public function store(Request $request,$id)
     {
          $this ->validate ($request, array(
-                        'staff_number'=>'required'
+                        'staff_number'=>'required',
                         'name' => 'required | max:255' ,
                         'position_new'=>'required',
                         'salary'=>'required',
                         'outlet'=>'required'));
 
         $employee = new Employee;
+        $employee->id = mt_rand(0,100000);
         $employee->candidate_id=$id;
         $employee->staff_number = $request->staff_number;
-        $employee->name=$request->name;
+        $employee->name= $request->name;
         $employee->salary=$request->salary;
         $employee->outlet=$request->outlet;
         $employee->position=$request->position_new;

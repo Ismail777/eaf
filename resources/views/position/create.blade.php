@@ -7,7 +7,8 @@
 
 	<h1>Fresco Employment Application Form</h1>
 
-
+<div class="row">
+  <div class="col-md-7">
   <div class="container-bar">
     <ul class="progressbar">
       <li >Personal Details</li>
@@ -16,6 +17,8 @@
       <li>Emloyment History</li>
       <li >Declarations</li>
     </ul>
+  </div>
+  </div>
   </div>
 
 
@@ -42,11 +45,11 @@
      <option>Others: please right down</option>
     </datalist> 
     </div></div>
- 
+
     <div class="form-group">
   	{{form::label ('pre_date', '*2. Earliest Available Date/Preffrered Start Date:',['class'=>'col-md-3 control-label'])}}
     <div class="col-md-9">
-  	{{form::date ('pre_date', null, array('class' => 'form-control', 'required' =>'','placeholder'=>'MM/DD/YYYY')) }}
+  	{{form::date ('pre_date', null, array('class' => 'form-control','id'=>'date', 'required' =>'','placeholder'=>'MM/DD/YYYY')) }}
     </div></div>
 
     <div class="form-group">
@@ -88,3 +91,4 @@
   	<h3 style="color: red;"> *Fields are mandatory </h3>
 
 @endsection
+

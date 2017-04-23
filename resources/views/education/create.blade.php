@@ -8,7 +8,9 @@
 
 	<h1>Fresco Employment Application Form</h1>
 
-
+  
+<div class="row">
+  <div class="col-md-7">
   <div class="container-bar">
     <ul class="progressbar">
       <li>Personal Details</li>
@@ -17,12 +19,13 @@
       <li>Emloyment History</li>
       <li >Declarations</li>
     </ul>
-  </div>
+  </div></div></div>
 
 
 	<h2>1. Education details: your most recent educations</h2>
 
-	
+	    
+    <a href="{{route('education.create2')}}" class="btn btn-default btn-block btn-lg">Add Another Edcuation Record</a><br><br>
 	
 {!! Form::open(['action' => 'EducationController@store' , 'data-parseley-validate'=> '']) !!} 
       
@@ -64,11 +67,10 @@
     </div> </div>
 
 </div>
-    
-  	<a href="{{route('education.create2')}}" class="btn btn-default btn-block">Add Another Edcuation Record</a>
+
   
-      <a href="{{route('position.create')}}" class="btn btn-lg btn-success"><b>Previous Page</b></a>
-  	{{form::submit ('Submit', array ('class' => 'btn btn-success btn-lg btn-lg ' ))}}
+      <a href="{{route('position.create')}}" class="btn btn-lg btn-success">Previous Page</a>
+  	{{form::submit ('Next Page', array ('class' => 'btn btn-success btn-lg btn-lg ' ))}}
 
 	{{Form::close()}}
 

@@ -8,6 +8,8 @@
 
 	<h1>Fresco Employment Application Form</h1><br>
 
+<div class="row">
+  <div class="col-md-7">
   <div class="container-bar">
     <ul class="progressbar">
       <li class="active">Personal Details</li>
@@ -16,7 +18,7 @@
       <li>Emloyment History</li>
       <li>Declarations</li>
     </ul>
-  </div>
+  </div></div> </div>
 
 
 	<h3>1. Personal details:</h3>

@@ -11,26 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 //Employee routes:
 Route::resource ('employee' , 'EmployeeController', ['except'=>['create','store']]);
 Route::get ('employee/{employee}/create',['uses'=>'EmployeeController@create' ,'as'=>'employee.create']);
 Route::post ('employee/{employee}/store',['uses'=>'EmployeeController@store' ,'as'=>'employee.store']);
 Route::get ('search_employee',['uses'=>'EmployeeController@search', 'as'=>'employee.search']);
 
+//Employee only routes
+Route::resource ('employeeDocs' , 'EmployeeDocumentsController');
 
 
 //candidate Routes
 Route::get ('search',['uses'=>'CandidateController@search', 'as'=>'candidate.search']);
 Route::resource ('candidate' , 'CandidateController');
-Route::get ('candidate/{id}/update',['uses'=>'CandidateController@interviewUpdate', 'as'=>'interview']);
+Route::PUT ('candidate/{id}/update',['uses'=>'CandidateController@interviewUpdate', 'as'=>'interview']);
 
 
 
 //candidate Emails Routes
-Route::get ('candidate/{id}/complete',['uses'=>'DeclarationController@getFormComplete', 'as'=>'form_complete.create']);
+Route::get ('candidate/{id}/complete',['uses'=>'DeclarationController@getFormComplete', 'as'=>'form_complete']);
 Route::get('candidate/{id}/invite', ['uses'=>'EmailsController@getInvitation', 'as'=>'invite.create']);
 Route::post('candidate/{id}/invite', 'EmailsController@postInvite')->name('invite.post');
 Route::post('candidate/{id}/E_profile', 'EmailsController@postProfile')->name('E_profile.post');
@@ -46,7 +45,7 @@ Route::get('candidate/{id}/result', ['uses'=>'OutcomeController@show', 'as'=>'ou
 
 
 //Forms Routes
-Route::get ('personal/create',['uses'=>'personalInfoController@create', 'as'=>'personal.create']);
+Route::get ('/',['uses'=>'personalInfoController@create', 'as'=>'personal.create']);
 Route::post ('personal/store',['uses'=>'personalInfoController@store','as'=>'personal.store']);
 
 Route::get ('position/create',['uses'=>'PositionController@create', 'as'=>'position.create']);
@@ -80,4 +79,3 @@ Route::post('/', 'Auth\AdminLoginController@login')->name('admin.submit');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');

@@ -32,8 +32,7 @@
 			<h3 >Position and Interview Information</h3>
 			<table>
 				<tr>
-					<th>Interview time</th>
-					<th>Interview date</th>
+				
 					<th>Position</th>
 					<th>Preffered Starting Date</th>
 					<th>Salary</th>
@@ -41,8 +40,7 @@
 					<th>Name of the friend who recommended him/her</th>
 				</tr>
 				<tr>
-					<td>{{$candidate->position->int_time}}</td>
-					<td>{{$candidate->position->int_date}}</td>
+					
 					<td>{{$candidate->position->position}}</td>
 					<td>{{$candidate->position->pre_date}}</td>
 					<td>{{$candidate->position->salary}}</td>
@@ -70,8 +68,9 @@
 					<td>{{ $education['cert'] }}</td>
 					<td>{{ $education['cgpa'] }}</td>
 				</tr>
+				@endforeach
 			</table>
-			@endforeach
+			
 
 
 			<h3 style="margin: 20px;">Employment Information</h3>

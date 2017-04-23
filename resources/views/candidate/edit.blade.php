@@ -41,5 +41,5 @@
 
 
 {{Form::submit ('Save Changes', array("class"=>'btn btn-success'))}}
-
+	</div>
 @endsection

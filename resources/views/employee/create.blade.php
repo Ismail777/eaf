@@ -23,8 +23,8 @@
 	{{Form::label ('salary', 'Salary:')}}
 	{{Form::text('salary', null, array ("class" => 'form-control input-lg')) }}
 <br>
-	{{Form::submit('Make an employee record',['class'=>'form-control btn btn-lg btn-success'])}}
+	{{Form::submit('Create An Employee Record',['class'=>'btn btn-block btn-lg btn-success'])}}
 
 {{Form::close()}}
-
+</div>
 @endsection
