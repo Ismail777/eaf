@@ -48,7 +48,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'employee_id' => 'required | exists:employees,id',
+            'employee_id' => 'required|exists:employees,id',
         ]);
     }
 
@@ -60,13 +60,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-    
         return User::create([
-            'name' => $data['name'],
-            'api_token'=>str_random(60),
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
             'employee_id'=>$data['employee_id'],
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'api_token'=>str_random(60),
+            'password' => bcrypt($data['password']),
         ]); 
 
     }

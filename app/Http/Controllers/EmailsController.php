@@ -33,6 +33,7 @@ class EmailsController extends Controller
         $candidate= Candidate::Find ($id);
         $data = array('email'=> $candidate->email
                     , 'time'=> $request->time
+                    , 'date'=> $request->date
                     , 'place'=> $request->place
                     , 'interviewer'=> $request->interviewer
                     , 'notes'=> $request->notes

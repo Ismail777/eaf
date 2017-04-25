@@ -18,4 +18,3 @@
 @include ('partials._footer');
  </body>
 
-</html>

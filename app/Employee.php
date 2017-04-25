@@ -14,4 +14,9 @@ class Employee extends Model
     	return $this->hasOne('App\User');
     }
 
+
+	 public function edocument(){
+    	return $this->hasOne('App\EDocument');
+    }
+
 }

@@ -99,7 +99,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-          $employee= Employee::find($id);
+          $employee= Employee::find($employee);
          $employee -> delete();
         Session::flash ('success', 'The employee has been successfuly deleted');
         return redirect ()-> route('employee.index');

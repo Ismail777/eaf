@@ -15,12 +15,14 @@
 		<div class="col-md-4">
 		 <h1>All Candidates</h1> 
 			{!! Form::open(['method'=>'GET', 'route'=>'candidate.search']) !!}
-			<input type="text" name="search" class="form-control" placeholder="Search..">
-			<span class="input-group-btn">
-			<button type="submit" class="btn btn-default btn-lg btn-success">
-			<i class="glyphicon glyphicon-search" ></i>
-			</button>
-			</span>
+			<div class="input-group">
+  		  <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
 			{!! Form::close() !!}
 		</div>
 
@@ -50,7 +52,7 @@
 		 	 	<td>{{$candidate->position->position }} </td>
 		 	 	<td>{{ date ( 'jS, M,y  G:i' , strtotime ($candidate->created_at) )}}</td>
 		 	 	<td><a href="{{route('candidate.show', $candidate->id) }}" class="btn btn-default"> View Candidate</a></td>
-		 	 	<td><a href="{{route('outcome.show', $candidate->id)}}" class="btn btn-default">  View Outcome </a></td>
+		 	 	<td><a href="{{route('outcome.show', $candidate->id)}}" class="btn btn-default">  {{$candidate->outcome->outcome}} </a></td>
 		 	 	 <td><a href="{{route('candidate.destroy',$candidate->id)}}" class="btn btn-danger btn-lg">Delete</a></td>
 		 	 	</tr>
 		 	 	@endforeach

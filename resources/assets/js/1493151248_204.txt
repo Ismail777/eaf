@@ -1,0 +1,390 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 02, 2017 at 10:54 PM
+-- Server version: 5.7.17-0ubuntu0.16.04.1
+-- PHP Version: 7.0.15-0ubuntu0.16.04.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `eaf`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `job_title`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Steven Tan', 'steven.tan@fresco.com.my', 'Manager/Admin', '$2y$10$f/RVxD61C07QUH6MDBkVEOIMnC0MOg/2D.hNAYH1Tnr5UoC4x4pdO', NULL, '2017-03-28 13:20:55', '2017-03-28 13:20:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `candidates`
+--
+
+CREATE TABLE `candidates` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nric` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mobile_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birthday` date NOT NULL,
+  `epf` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `martial_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `spouse_occupation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kids_no` int(10) UNSIGNED DEFAULT NULL,
+  `birth_country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `citizenship` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `religion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `race` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `interview` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `candidates`
+--
+
+INSERT INTO `candidates` (`id`, `created_at`, `updated_at`, `name`, `nric`, `address`, `mobile_no`, `email`, `birthday`, `epf`, `gender`, `martial_status`, `spouse_occupation`, `kids_no`, `birth_country`, `citizenship`, `religion`, `race`, `interview`) VALUES
+(1, '2017-03-28 13:24:50', '2017-03-30 11:50:59', 'Mohamed Al-Hakeem', 'P02469580', 'UIA Gombk', '01139850548', 'Mahasen@gmail.com', '2017-03-09', NULL, 'male', 'single', NULL, NULL, 'malaysia', 'malaysia', 'islam', 'malay', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `declarations`
+--
+
+CREATE TABLE `declarations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `candidate_id` int(10) UNSIGNED NOT NULL,
+  `employed_by_fresco` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `relatives_in_fresco` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `relative_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `food_cert` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `food_cert_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `typhoid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `typhoid_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phy_disability` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phy_disability_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `illness` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `illness_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jaya_grocer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fresco` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `declarations`
+--
+
+INSERT INTO `declarations` (`id`, `created_at`, `updated_at`, `candidate_id`, `employed_by_fresco`, `relatives_in_fresco`, `relative_name`, `food_cert`, `food_cert_date`, `typhoid`, `typhoid_date`, `phy_disability`, `phy_disability_type`, `illness`, `illness_type`, `jaya_grocer`, `fresco`) VALUES
+(1, '2017-03-28 13:29:42', '2017-03-28 13:29:42', 1, 'yes', 'yes', NULL, 'yes', NULL, 'yes', NULL, 'yes', NULL, 'yes', NULL, 'yes', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `educations`
+--
+
+CREATE TABLE `educations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `candidate_id` int(10) UNSIGNED DEFAULT NULL,
+  `school` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `cert` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cgpa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `educations`
+--
+
+INSERT INTO `educations` (`id`, `created_at`, `updated_at`, `candidate_id`, `school`, `start_date`, `end_date`, `cert`, `cgpa`) VALUES
+(1, '2017-03-28 13:27:31', '2017-03-28 13:27:31', 1, 'Limkowkwing', '1111-11-11', '2222-02-22', 'IT', '3.4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employments`
+--
+
+CREATE TABLE `employments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `candidate_id` int(10) UNSIGNED DEFAULT NULL,
+  `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ex_salary` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `leave_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `employments`
+--
+
+INSERT INTO `employments` (`id`, `created_at`, `updated_at`, `candidate_id`, `company`, `job_title`, `ex_salary`, `start_date`, `end_date`, `leave_reason`) VALUES
+(1, '2017-03-28 13:29:38', '2017-03-28 13:29:38', 1, 'Sealand', 'Accountant', '2500', '2222-11-12', '2111-12-12', 'quit');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(70, '2014_10_12_000000_create_users_table', 1),
+(71, '2014_10_12_100000_create_password_resets_table', 1),
+(72, '2017_03_14_063032_create_candidates_table', 1),
+(73, '2017_03_15_061602_create_positions_table', 1),
+(74, '2017_03_17_164128_create_educations_table', 1),
+(75, '2017_03_18_080012_create_employments_table', 1),
+(76, '2017_03_19_165214_create_declarations_table', 1),
+(77, '2017_03_26_174706_create_admins_table', 1),
+(78, '2017_03_28_201106_create_outcomes_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `outcomes`
+--
+
+CREATE TABLE `outcomes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `candidate_id` int(10) UNSIGNED NOT NULL,
+  `outcome` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remarks` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `outcomes`
+--
+
+INSERT INTO `outcomes` (`id`, `candidate_id`, `outcome`, `remarks`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Approved', 'something', '2017-03-28 13:30:17', '2017-03-28 13:30:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `positions`
+--
+
+CREATE TABLE `positions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `candidate_id` int(10) UNSIGNED NOT NULL,
+  `int_time` time NOT NULL,
+  `int_date` date NOT NULL,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pre_date` date NOT NULL,
+  `pre_outlet` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'any',
+  `salary` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `source` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `recommend_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `positions`
+--
+
+INSERT INTO `positions` (`id`, `created_at`, `updated_at`, `candidate_id`, `int_time`, `int_date`, `position`, `pre_date`, `pre_outlet`, `salary`, `source`, `recommend_name`) VALUES
+(1, '2017-03-28 13:25:22', '2017-03-28 13:25:22', 1, '00:32:00', '2222-11-12', 'Supervisor/Assistant Supervisor', '1211-11-22', 'Bukit Jelutong', '5000Myr', 'Outlet Posters', NULL),
+(2, '2017-03-28 13:26:38', '2017-03-28 13:26:38', 1, '00:32:00', '2222-11-12', 'Supervisor/Assistant Supervisor', '1211-11-22', 'Bukit Jelutong', '5000Myr', 'Outlet Posters', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admins_email_unique` (`email`);
+
+--
+-- Indexes for table `candidates`
+--
+ALTER TABLE `candidates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `declarations`
+--
+ALTER TABLE `declarations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `educations`
+--
+ALTER TABLE `educations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employments`
+--
+ALTER TABLE `employments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `outcomes`
+--
+ALTER TABLE `outcomes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`),
+  ADD KEY `password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `positions`
+--
+ALTER TABLE `positions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `candidates`
+--
+ALTER TABLE `candidates`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `declarations`
+--
+ALTER TABLE `declarations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `educations`
+--
+ALTER TABLE `educations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `employments`
+--
+ALTER TABLE `employments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+--
+-- AUTO_INCREMENT for table `outcomes`
+--
+ALTER TABLE `outcomes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `positions`
+--
+ALTER TABLE `positions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
