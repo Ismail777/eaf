@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     public function candidate() {
-		return $this->hasOne ('App\Candidate');
+		return $this->belongsTo ('App\Candidate');
 	}
 
 	 public function user(){
@@ -18,5 +18,6 @@ class Employee extends Model
 	 public function edocument(){
     	return $this->hasOne('App\EDocument');
     }
+
 
 }

@@ -8,7 +8,7 @@ class Candidate extends Model
 {
      
      public function employee(){
-    	return $this->belongsTo ('App\Employee');
+    	return $this->hasOne ('App\Employee');
     }
 
 	public function position() {

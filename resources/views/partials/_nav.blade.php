@@ -33,6 +33,7 @@
 
           @else  
            <a style="margin-top: 7px;" href="{{route ('admin') }}" class="btn btn-default" >Admins Login </a> 
+           <a style="margin-top: 7px;" href="{{route ('login') }}" class="btn btn-default" >Staff Login </a> 
           @endif
           </ul>
         </div>

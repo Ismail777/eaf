@@ -1,6 +1,5 @@
 @extends ("Main")
-<head><title>Fresco EAF | Position </title>
-</head>
+
 
 @section ('content')
 
@@ -49,7 +48,8 @@
     <div class="form-group">
   	{{form::label ('pre_date', '*2. Earliest Available Date/Preffrered Start Date:',['class'=>'col-md-3 control-label'])}}
     <div class="col-md-9">
-  	{{form::date ('pre_date', null, array('class' => 'form-control','id'=>'date', 'required' =>'','placeholder'=>'MM/DD/YYYY')) }}
+    <input class="form-control" id="date" name="pre_date" placeholder="MM/DD/YYYY" type="text"/>
+  	
     </div></div>
 
     <div class="form-group">
@@ -89,6 +89,24 @@
    
 
   	<h3 style="color: red;"> *Fields are mandatory </h3>
+  @endsection
 
+@section ('scripts')
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+ <script>
+    $(document).ready(function(){
+      var date_input=$('input[id="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
 @endsection
+
 

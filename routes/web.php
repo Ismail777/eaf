@@ -18,7 +18,7 @@ Route::post ('employee/{employee}/store',['uses'=>'EmployeeController@store' ,'a
 Route::get ('search_employee',['uses'=>'EmployeeController@search', 'as'=>'employee.search']);
 
 //Employee only routes
-Route::resource ('employeeDocs' , 'EmployeeDocumentsController');
+Route::resource ('employee-docs' , 'EmployeeDocumentsController');
 
 
 //candidate Routes
@@ -31,6 +31,7 @@ Route::PUT ('candidate/{id}/update',['uses'=>'CandidateController@interviewUpdat
 //candidate Emails Routes
 Route::get ('candidate/{id}/complete',['uses'=>'DeclarationController@getFormComplete', 'as'=>'form_complete']);
 Route::get('candidate/{id}/invite', ['uses'=>'EmailsController@getInvitation', 'as'=>'invite.create']);
+Route::get('candidate/{id}/approval-mail', ['uses'=>'EmailsController@sendApprovalLetter', 'as'=>'approvalMail']);
 Route::post('candidate/{id}/invite', 'EmailsController@postInvite')->name('invite.post');
 Route::post('candidate/{id}/E_profile', 'EmailsController@postProfile')->name('E_profile.post');
 Route::get('candidate/{id}/rejectEmail', 'EmailsController@sendRejectionLetter')->name('rejectEmail');

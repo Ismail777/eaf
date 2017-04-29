@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Candidate;
+use App\Employee;
 use Session;
 use Mail;
 use App\Http\Requests;
 use App\Mail\FrescoEAF;
+use App\Mail\EmployeeApproval;
 use App\Mail\EafProfile;
 
 class EmailsController extends Controller
@@ -54,7 +56,7 @@ class EmailsController extends Controller
      public function postProfile($id) {
       
           $candidate= Candidate::Find ($id);
-          Mail::to($candidate->email)->send(new EafProfile($candidate));
+          Mail::to($candidate->email)->queue(new EafProfile($candidate));
 
       Session::flash ('success','Your EAF profile has been sent to your inbox');
       return redirect ('/');
@@ -65,10 +67,20 @@ class EmailsController extends Controller
    public function sendRejectionLetter ($id){
 
         $candidate = Candidate::find ($id);
-        Mail::to($candidate->email)->send(new FrescoEAF($candidate));
+        Mail::to($candidate->email)->queue(new FrescoEAF($candidate));
    
       Session::flash ('success','A Rejection letter has been sent to the candidate');
       return redirect()->route ('candidate.index');
+
+   }
+
+   public function sendApprovalLetter ($id)
+   {
+
+    $employee = Employee::find ($id);
+    Mail::to ($employee->candidate->email)->send(new EmployeeApproval($employee));
+    Session::flash ('success','An approval letter has been sent to the employee');
+    return redirect ()->route('employee.index');
 
    }
 }

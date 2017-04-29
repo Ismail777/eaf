@@ -6,6 +6,7 @@ use App\Employee;
 use Illuminate\Http\Request;
 use App\Candidate;
 use Session;
+use App\EDocument;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +14,7 @@ class EmployeeController extends Controller
         $this ->middleware ('auth:admin') ;  // Limit the featured of this controller to logged in users you may add (except or only is an array)
     }
     public function index()
-    {
+    {   
          $employees = Employee::orderBy('id','desc')->paginate(10);
         return view ('employee.index')->with('employees',$employees);
     }
@@ -36,8 +37,8 @@ class EmployeeController extends Controller
     public function store(Request $request,$id)
     {
          $this ->validate ($request, array(
-                        'staff_number'=>'required',
-                        'name' => 'required | max:255' ,
+                        'staff_number'=>'unique|required',
+                        'name' => ' unique|required|max:255' ,
                         'position_new'=>'required',
                         'salary'=>'required',
                         'outlet'=>'required'));
@@ -63,9 +64,13 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show( Employee $employee)
     {
-        //
+        $employee = Employee::find ($employee);
+        $edocument = EDocument::where ('employee_id',$employee->id)->first();
+     return view ('employee.show')->withEmployee($employee)->withEdocument($edocument);
+
+
     }
 
     /**
@@ -76,19 +81,30 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        
+         $employee = Employee::find($employee);
+        return view ('employee.edit') -> with ('employee', $employee);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Employee $employee)
     {
-        //
+           $this ->validate ($request, array('name' => 'required | max:255' ,
+                                        'position' => 'required' ,
+                                        'outlet' => 'required | max:255 ' ,
+                                        'salary'=>'required'
+                                      
+                                    
+                                                                    )) ;
+        $employee = Employee::find ($employee);
+        $employee ->name = $request -> input('name');
+        $employee ->position = $request -> input('position');
+        $employee ->outlet = $request -> input('outlet');
+        $employee ->salary = $request -> input('salary');
+        $employee->save();
+
+        Session::flash ('success', 'Employee information has been changes.');
+
+        return redirect()->route('employee.show', $employee->id);
     }
 
     /**

@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Storage;
 class EmployeeDocumentsController extends Controller
 { 
     public function __construct(){
+       $this->middleware ('auth:admin',['only'=>['show']]);
        $this ->middleware ('auth') ; 
+    
    }
 
     public function index()
@@ -116,7 +118,9 @@ class EmployeeDocumentsController extends Controller
     public function show($id)
     {
         $edocument = EDocument::find ($id);
-        return view ('edocuments.show')->withEdocument($edocument);
+        $employee_id = $edocument->employee_id;
+        $employee = Employee::find($employee_id);
+        return view ('edocuments.show')->withEdocument($edocument)->withEmployee($employee);
      }
 
     /**

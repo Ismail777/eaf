@@ -65,7 +65,7 @@
     <div class="form-group">
   	{{form::label ('birthday', '*6. Birthday:',['class'=>'col-md-3 control-label'])}}
      <div class="col-md-9">
-  	{{form::date ('birthday', null, array('class' => 'form-control', 'required' =>'', 'maxlength'=>'255','minlength'=>'5')) }}
+  	{{form::text ('birthday', null, array('id'=>'date','class' => 'form-control', 'required' =>'', 'maxlength'=>'255','minlength'=>'5')) }}
     </div></div>
 
 
@@ -184,3 +184,21 @@
 
 
 @endsection 
+
+@section ('scripts')
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+ <script>
+    $(document).ready(function(){
+      var date_input=$('input[id="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
+@endsection

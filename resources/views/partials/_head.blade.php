@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +12,8 @@
 <link rel="stylesheet" href="css/bootstrap-datetimepicker.css" />
 {!! Html::style('css/styles.css') !!}
 {!! Html::style('css/bootstrap-datetimepicker.css') !!}
-
+{!!Html::style("css/datepicker.css")!!}
+{!!Html::style("css/datepicker3.css)") !!}
 @yield('stylesheets')
 </head>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
